@@ -1,0 +1,1911 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1252" />
+<title>Quelles coalitions possibles ?</title>
+<style>
+body {
+  font-family : Helvetica, Geneva, Arial, SunSans-Regular, sans-serif;
+}
+table  {
+  border-collapse: collapse;
+}
+table,th, td {
+  border: 1px solid black;
+}
+#tabProg td {
+  border: 0px solid black;
+}
+
+h3 {text-align:center}
+.centerTable {
+  margin-left:auto;
+  margin-right:auto;
+  border:0px;
+}
+.numcell {
+  text-align: right;
+}
+#coaTab {
+  margin:10px;
+}
+#tabProg {
+  font-size:9pt;
+}
+footer {
+  font-size:.7em;
+  display:block;
+  text-align:right;
+}
+.bortop, #tabProg tr:first-child > th, #tabProg tr:first-child > td {
+  border-top-width: 2px;
+}
+#tabProg th.first, #tabProg td.first, #tabProg tr > th:first-child, #tabProg tr > td:first-child {
+  border-left-width: 2px;
+}
+#tabProg tr > th:last-child, #tabProg tr > td:last-child {
+  border-right-width: 2px;
+}
+#tabProg tr:first-child > th, #tabProg tr:nth-child(2) > th, #tabProg tr:last-child > th, #tabProg tr:last-child > td {
+  border-bottom-width: 2px;
+}
+</style>
+<link rel="stylesheet" href="tabber.css" TYPE="text/css" MEDIA="screen">
+<script src="http://code.jquery.com/jquery-1.5.1.min.js"></script>
+<script type="text/javascript" src="tabber-minimized.js"></script>
+<script>
+  
+  // 1999
+  var leg1999 = {
+   chamb : {
+    "VLD":23,   
+    "CVP":22,   
+    "PS":19,    
+    "MR":18,    
+    "VB":15,    
+    "SP":14,    
+    "ecolo":11, 
+    "PSC":10,   
+    "AGALEV":9, 
+    "VU":8,     
+    "FN":1      
+   },
+  sena : {
+    "VLD":12,
+    "CVP":10,
+    "PS":10,
+    "MR":9,
+    "VB":6,
+    "SP":7,
+    "ecolo":6,
+    "AGALEV":4,
+    "PSC":5,
+    "VU":2,
+    "FN":0
+   },
+   dePart : "PS", // le parti du sénateur germanophone (siège à décompter pour atteindre la majorité francophone)
+   gagnants : { // progressions
+    "ecolo":true,
+    "AGALEV":true
+   },
+   perdants : { // progressions
+    "CVP":true
+   },
+   progrInit : {
+    "VLD":{
+      require:[],
+      reject:["VB"],
+      consti:false,
+      insti:false,
+      lingequi:true
+    },
+    "CVP":{
+      require:[],
+      reject:["VB"],
+      consti:false,
+      insti:false,
+      lingequi:true
+    },
+    "SP":{
+      require:[],
+      reject:["VB"],
+      consti:false,
+      insti:false,
+      lingequi:true
+    },
+    "VB":{
+      require:[],
+      reject:[],
+      consti:false,
+      insti:false,
+      lingequi:true
+    },
+    "AGALEV":{
+      require:["ecolo"],
+      reject:["VB"],
+      consti:false,
+      insti:false,
+      lingequi:true
+    },
+    "VU":{
+      require:[],
+      reject:["VB"],
+      consti:false,
+      insti:false,
+      lingequi:true
+    },
+    "PS":{
+      require:[],
+      reject:["VB"],
+      consti:false,
+      insti:false,
+      lingequi:true
+    },
+    "MR":{
+      require:[],
+      reject:["VB"],
+      consti:false,
+      insti:false,
+      lingequi:true
+    },
+    "PSC":{
+      require:[],
+      reject:["VB"],
+      consti:false,
+      insti:false,
+      lingequi:true
+    },
+    "ecolo":{
+      require:["AGALEV"],
+      reject:["VB"],
+      consti:false,
+      insti:false,
+      lingequi:true
+    },
+    "FN":{
+      require:[],
+      reject:["VB"],
+      consti:false,
+      insti:false,
+      lingequi:true
+    }
+   },
+   specCoa : {},
+   
+   critCordon : true,
+   critWinners : true,
+   critLosers : true,
+   critBigFish : true,
+   critFamilies : true,
+   critBigFamily : true,
+   critInsti : false,
+   hideRedun : true,
+   actualGouv : {"VLD":true, "MR":true, "PS":true, "SP":true, "Agalev":true, "ecolo":true},
+   actualRefoGouv : {}
+  };
+
+
+  // 2003
+  var leg2003 = {
+   chamb : {
+    "VLD":25,   // +2
+    "sp.a-spirit":23,    // +9
+    "CD&V":21,   // -1
+    "PS":25,    // +6
+    "VB":18,    // +3
+    "MR":24,    // +6
+    "CDh":8,   // -2
+    "N-VA":1,     // -7
+    "ecolo":4, // -5
+    "FN":1     
+   },
+  sena : {
+    "VLD":11,   // +2
+    "sp.a-spirit":12,    // +9
+    "CD&V":9,   // -1
+    "PS":11,    // +6
+    "VB":9,    // +3
+    "MR":11,    // +6
+    "CDh":4,   // -2
+    "N-VA":0,     // -7
+    "ecolo":2, // -5
+    "FN":2
+   },
+   dePart : "MR", // le parti du sénateur germanophone (siège à décompter pour atteindre la majorité francophone)
+   gagnants : { // progressions
+    "sp.a-spirit":true,
+    "PS":true
+   },
+   perdants : { // progressions
+    "ecolo":true
+   },
+   progrInit : {
+    "VLD":{
+      require:[],
+      reject:["VB"],
+      consti:false,
+      insti:false,
+      lingequi:true
+    },
+    "CD&V":{
+      require:["N-VA"],
+      reject:["VB"],
+      consti:false,
+      insti:false,
+      lingequi:true
+    },
+    "sp.a-spirit":{
+      require:[],
+      reject:["VB"],
+      consti:false,
+      insti:false,
+      lingequi:true
+    },
+    "VB":{
+      require:[],
+      reject:[],
+      consti:false,
+      insti:false,
+      lingequi:true
+    },
+    "AGALEV":{
+      require:["ecolo"],
+      reject:["VB"],
+      consti:false,
+      insti:false,
+      lingequi:true
+    },
+    "N-VA":{
+      require:["CD&V"],
+      reject:["VB"],
+      consti:false,
+      insti:false,
+      lingequi:true
+    },
+    "PS":{
+      require:[],
+      reject:["VB"],
+      consti:false,
+      insti:false,
+      lingequi:true
+    },
+    "MR":{
+      require:[],
+      reject:["VB"],
+      consti:false,
+      insti:false,
+      lingequi:true
+    },
+    "CDh":{
+      require:[],
+      reject:["VB"],
+      consti:false,
+      insti:false,
+      lingequi:true
+    },
+    "ecolo":{
+      require:["AGALEV"],
+      reject:["VB"],
+      consti:false,
+      insti:false,
+      lingequi:true
+    },
+    "FN":{
+      require:[],
+      reject:["VB"],
+      consti:false,
+      insti:false,
+      lingequi:true
+    }
+   },
+   specCoa : {},
+   critCordon : true,
+   critWinners : true,
+   critLosers : true,
+   critBigFish : true,
+   critFamilies : true,
+   critBigFamily : true,
+   critInsti : false,
+   hideRedun : true,
+   actualGouv : {"VLD":true, "MR":true, "PS":true, "sp.a-spirit":true},
+   actualRefoGouv : {}
+  };
+
+  var leg2007 = {
+   chamb : {
+    "CD&V":23, // difficile de savoir comment se répartissent cd&v et nva dont le cartel a explosé en cours de législature
+    "MR":23,
+    "PS":20, //-12
+    "Open Vld":18, //+5
+    "VB":17, // un député est passé de VB à NVA en cours de législature (je le compte ici dans VB)
+    "sp.a":14,
+    "CDh":10,
+    "ecolo":8,
+    "N-VA":7, // difficile de savoir comment se répartissent cd&v et nva dont le cartel a explosé en cours de législature + un député est passé de VB à NVA  (je le compte ici dans VB)
+    "LDd":5,
+    "GROEN!":4,
+    "FN":1
+   },
+   sena : {
+    "CD&V":12, //+7
+    "MR":10,
+    "PS":9, //-12
+    "Open Vld":9, //+5
+    "VB":8, //+4
+    "sp.a":6,
+    "CDh":5,
+    "ecolo":5,
+    "N-VA":2, // -20
+    "LDd":1,
+    "GROEN!":3,
+    "FN":1
+   },
+   dePart : "PS", // le parti du sénateur germanophone (siège à décompter pour atteindre la majorité francophone)
+   gagnants : { // progressions
+    "CD&V":true
+   },
+   perdants : { // progressions
+     "sp.a":true
+   },
+   progrInit : {
+    "N-VA":{
+      require:["CD&V"],
+      reject:["VB"],
+      consti:true,
+      insti:true,
+      lingequi:true
+    },
+    "CD&V":{
+      require:["N-VA"],
+      reject:["VB"],
+      consti:true,
+      insti:true,
+      lingequi:true
+    },
+    "sp.a":{
+      require:[],
+      reject:["VB"],
+      consti:true,
+      insti:true,
+      lingequi:true
+    },
+    "Open Vld":{
+      require:[],
+      reject:["VB"],
+      consti:true,
+      insti:true,
+      lingequi:true
+    },
+    "VB":{
+      require:[],
+      reject:[],
+      consti:true,
+      insti:true,
+      lingequi:true
+    },
+    "GROEN!":{
+      require:["ecolo"],
+      reject:["VB"],
+      consti:true,
+      insti:true,
+      lingequi:true
+    },
+    "LDd":{
+      require:[],
+      reject:["VB"],
+      consti:true,
+      insti:true,
+      lingequi:true
+    },
+    "PS":{
+      require:[],
+      reject:["VB","LDd"],
+      consti:false,
+      insti:false,
+      lingequi:true
+    },
+    "MR":{
+      require:[],
+      reject:["VB","LDd"],
+      consti:true,
+      insti:false,
+      lingequi:true
+    },
+    "CDh":{
+      require:[],
+      reject:["VB","LDd"],
+      consti:false,
+      insti:false,
+      lingequi:true
+    },
+    "ecolo":{
+      require:["GROEN!"],
+      reject:["VB","LDd"],
+      consti:true,
+      insti:false,
+      lingequi:true
+    },
+    "FN":{
+      require:[],
+      reject:["VB","LDd"],
+      consti:false,
+      insti:false,
+      lingequi:true
+    }
+   },
+   specCoa : { },
+   critCordon : true,
+   critWinners : true,
+   critLosers : true,
+   critBigFish : true,
+   critFamilies : false,
+   critBigFamily : true,
+   critInsti : false,
+   hideRedun : false,
+   actualGouv : {"Open Vld":true, "CD&V":true, "N-VA":true, "MR":true, "PS":true, "CDh":true},
+   actualRefoGouv : {"Open Vld":true, "CD&V":true, "N-VA":true, "MR":true, "PS":true, "CDh":true, "ecolo":true}
+  };
+  
+  // 2010
+  var leg2010 = {
+   chamb : {
+    "N-VA":27,
+    "PS":26,
+    "MR":15,
+    "CD&V":17,
+    "sp.a":13,
+    "Open Vld":13,
+    "VB":12,
+    "CDh":9,
+    "ecolo":8,
+    "GROEN!":5,
+    "FDF":3,
+    "LDd":1,
+    "PP":1
+   },
+   sena : {
+    "N-VA":14,
+    "PS":13,
+    "MR":8,
+    "CD&V":7,
+    "sp.a":7,
+    "Open Vld":6,
+    "VB":5,
+    "CDh":4,
+    "ecolo":5,
+    "GROEN!":2,
+    "FDF":0,
+    "LDd":0,
+    "PP":0
+   },
+   dePart : "PS", // le parti du sénateur germanophone (siège à décompter pour atteindre la majorité francophone)
+   gagnants : { // progressions
+    "N-VA":true,
+    "PS":true
+   },
+   perdants : { // régressions
+    "Open Vld":true,
+    "MR":true,
+    "VB":true
+   },
+   progrInit : {
+    "N-VA":{
+      require:[],
+      reject:["VB", "FDF"],
+      consti:true,
+      insti:true,
+      lingequi:false
+    },
+    "CD&V":{
+      require:[],
+      reject:["VB"],
+      consti:true,
+      insti:true,
+      lingequi:false
+    },
+    "sp.a":{
+      require:[],
+      reject:["VB"],
+      consti:true,
+      insti:true,
+      lingequi:false
+    },
+    "Open Vld":{
+      require:[],
+      reject:["VB"],
+      consti:true,
+      insti:true,
+      lingequi:false
+    },
+    "VB":{
+      require:[],
+      reject:[],
+      consti:true,
+      insti:true,
+      lingequi:false
+    },
+    "GROEN!":{
+      require:["ecolo"],
+      reject:["VB"],
+      consti:true,
+      insti:true,
+      lingequi:false
+    },
+    "LDd":{
+      require:[],
+      reject:["VB"],
+      consti:true,
+      insti:true,
+      lingequi:false
+    },
+    "PS":{
+      require:[],
+      reject:["VB"],
+      consti:false,
+      insti:false,
+      lingequi:false
+    },
+    "MR":{
+      require:[],
+      reject:["VB"],
+      consti:true,
+      insti:false,
+      lingequi:false
+    },
+    "CDh":{
+      require:[],
+      reject:["VB"],
+      consti:false,
+      insti:false,
+      lingequi:false
+    },
+    "ecolo":{
+      require:["GROEN!"],
+      reject:["VB"],
+      consti:true,
+      insti:false,
+      lingequi:false
+    },
+    "FDF":{
+      require:[],
+      reject:["VB", "N-VA"],
+      consti:false,
+      insti:false,
+      lingequi:false
+    },
+    "PP":{
+      require:[],
+      reject:["VB"],
+      consti:false,
+      insti:false,
+      lingequi:false
+    }
+   },
+   specCoa : {
+    "«les 9»":{"N-VA":true,"PS":true,"sp.a":true,"Open Vld":true,"MR":true,"CD&V":true,"CDh":true,"ecolo":true,"GROEN!":true},
+    "«les 7»":{"N-VA":true,"PS":true,"sp.a":true,"CD&V":true,"CDh":true,"ecolo":true,"GROEN!":true},
+    "miroir (des exécutifs régionaux)":{"CD&V":true,"sp.a":true, "N-VA":true,"PS":true, "CDh":true, "ecolo":true}
+   },
+   critCordon : true,
+   critWinners : false,
+   critLosers : false,
+   critBigFish : false,
+   critFamilies : true,
+   critBigFamily : false,
+   critInsti : false,
+   hideRedun : true,
+   actualGouv : {"Open Vld":true, "CD&V":true, "sp.a":true, "MR":true, "PS":true, "CDh":true},
+   actualRefoGouv : {"Open Vld":true, "CD&V":true, "sp.a":true, "MR":true, "PS":true, "CDh":true, "ecolo":true, "GROEN!":true}
+  };
+
+
+  var currentLeg;
+
+
+  var chamb;
+  var sena;
+  var dePart; // le parti du sénateur germanophone (siège à décompter pour atteindre la majorité francophone)
+  var gagnants;
+  var perdants;
+  var progrInit;  
+  var specCoa;
+
+
+
+  var lang = {
+    "CD&V N-VA":"NL",
+    "N-VA":"NL",
+    "CD&V":"NL",
+    "sp.a":"NL",
+    "sp.a-spirit":"NL",
+    "Open Vld":"NL",
+    "VB":"NL",
+    "GROEN!":"NL",
+    "LDd":"NL",
+    "PS":"FR",
+    "MR":"FR",
+    "FDF":"FR",
+    "CDh":"FR",
+    "ecolo":"FR",
+    "PP":"FR",
+    "FN":"FR",
+    "VLD":"NL",
+    "CVP":"NL",
+    "SP":"NL",
+    "AGALEV":"NL",
+    "PSC":"FR",
+    "VU":"NL"
+  };
+  var color = {
+    "CD&V N-VA":"#F89734",
+    "N-VA":"#FCB340",
+    "CD&V":"#F89734",
+    "sp.a":"#FF0B14",
+    "sp.a-spirit":"#FF0B14",
+    "Open Vld":"#4997D5",
+    "VB":"#FFCC33",
+    "GROEN!":"#A3C02A",
+    "LDd":"#5FC6EF",
+    "PS":"#EE3439",
+    "MR":"#154F99",
+    "FDF":"#CD1898",
+    "CDh":"#FF5400",
+    "ecolo":"#C1E331",
+    "PP":"#CCCCCC",
+    "FN":"#CCCCCC",
+    "VLD":"#4997D5",
+    "CVP":"#F89734",
+    "SP":"#FF0B14",
+    "AGALEV":"#A3C02A",
+    "PSC":"#FF5400",
+    "VU":"#FCB340"
+  };
+  
+  var famille = {
+    "CVP":"centristes",
+    "CD&V N-VA":"centristes",
+    "CD&V":"centristes",
+    "VLD":"libéraux",
+    "Open Vld":"libéraux",
+    "SP":"socialistes",
+    "sp.a-spirit":"socialistes",
+    "sp.a":"socialistes",
+    "AGALEV":"verts",
+    "GROEN!":"verts",
+    "PS":"socialistes",
+    "MR":"libéraux",
+    "PSC":"centristes",
+    "CDh":"centristes",
+    "ecolo":"verts"
+  };
+
+  var inputs;
+  var tradCoa = {
+    "quadripartite d’union nationale":{
+      "socialistes":true, 
+      "libéraux":true, 
+      "centristes":true, 
+      "verts":true},
+
+    "tripartite traditionnelle":{"socialistes":true,"libéraux":true  ,"centristes":true},
+    "olivier":                  {"socialistes":true,"centristes":true,"verts":true},
+    "arc-en-ciel":              {"socialistes":true,"libéraux":true  ,"verts":true},
+    "jamaïcaine":               {"libéraux":true   ,"centristes":true,"verts":true},
+
+    "rouge romaine":{"socialistes":true,"centristes":true},
+    "violette":     {"socialistes":true,"libéraux":true},
+    "truquoise":    {"libéraux":true   ,"verts":true},
+    "orange bleue": {"libéraux":true   ,"centristes":true},
+
+    "lilas ou arménienne":{"libéraux":true,"centristes":true,"PS":true},
+    "orange sanguine":{"libéraux":true,"CVP":true,"CD&V N-VA":true,"CD&V":true,"PS":true}
+  };
+  
+  var coalitions;
+
+  var swartePiet = {
+    "VB" : true,
+    "FN" : true
+  };
+  
+  
+  
+  var progr;
+
+
+  function loadLeg(leg) {
+   currentLeg = leg;
+   chamb = leg.chamb;
+   sena = leg.sena;
+   dePart = leg.dePart;
+   gagnants = leg.gagnants;
+   perdants = leg.perdants;
+   progrInit = leg.progrInit;  
+   specCoa = leg.specCoa;    
+  }
+
+
+  function loadTab(leg) {
+    $(".btLeg").css("background-color","");
+    loadLeg(leg);
+    progr = jQuery.extend(true, {}, progrInit);
+    loadCoalitions();
+
+    var tab = $("#tab").empty();
+    tab.append("<tr><th>Partis</th><th>Chambre</th><th>Sénat</th></tr>");
+    tab.append("<tr><th colspan='4'>Groupe linguistique NL</th></tr>");
+    for (var part in chamb) {
+      if (lang[part]=="NL")
+        tab.append($("<tr/>").append($("<td/>").append($("<label/>").text(part).prepend($("<input type='checkbox' onclick='change()'/>").attr("value", part)))).append("<td class='numcell'>"+chamb[part]+"</td><td class='numcell'>"+sena[part]+"</td>"));
+    }
+    tab.append("<tr><th colspan='4'>Groupe linguistique FR</th></tr>");
+    for (var part in chamb) {
+      if (lang[part]=="FR")
+        tab.append($("<tr/>").append($("<td/>").append($("<label/>").text(part).prepend($("<input type='checkbox' onclick='change()'/>").attr("value", part)))).append("<td class='numcell'>"+chamb[part]+"</td><td class='numcell'>"+(part==dePart?(sena[part]-1)+"<small>+1</small>":sena[part])+"</td>"));
+    }
+    inputs = $("#tab input");
+
+    tab = $("#coaTab").empty();
+    tab.append("<tr><th colspan='2'>Coalitions</th></tr>");
+    for (var i=0; i<coalitions.length ;i++) {
+      var coa = coalitions[i];
+      tab.append("<tr><td>"+coa.name+"</td><td><input value='"+coa.name+"' name='coa' type='radio' onclick='setCoa()'></tr>");
+    }
+    
+    // critères
+    var tab = $("#tabProg").empty();
+    tab.append("<tr><th rowspan='2'>Parti</th><th rowspan='2' title='Veut une majorité des 2/3, pour réviser la Constitution'>2/3</th><th rowspan='2' title='Veut une majorité spéciale pour une réforme institutionnelle'>spéc.</th><th rowspan='2' title='Veut un équilibre linguistique: une majorité ordinaire dans les deux groupes linguistiques à la Chambre comme au Sénat'>equi.</th><th class='first' colspan='"+inputs.length+"'>Requiert la présence de</th><th class='first' colspan='"+inputs.length+"'>Refuse de négocier avec</th></tr>");
+    var row = $("<tr/>");
+    var first = true;
+    for (var part in chamb) {
+      var cell = $("<th class='verti' style='background-color:"+color[part]+"'/>").html(part.replace(/(.)/g,"$1<br />"));
+      if (first)
+        cell.addClass("first");
+      row.append(cell);
+      first = false;
+    }
+    first = true;
+    for (var part in chamb) {
+      var cell = $("<th class='verti' style='background-color:"+color[part]+"'/>").html(part.replace(/(.)/g,"$1<br />"));
+      if (first)
+        cell.addClass("first");
+      row.append(cell);
+      first = false;
+    }
+    tab.append(row);
+    for (var part in chamb) {
+      row = $("<tr/>");
+      row.attr("data-part", part);
+      row.append($("<th style='background-color:"+color[part]+"'/>").text(part));
+      row.append($("<td/>").append($("<input onclick='critChanged(this)' type='checkbox'"+(progr[part]["consti"]?" checked":"")+"/>").attr("data-crit", "consti")));
+      row.append($("<td/>").append($("<input onclick='critChanged(this)' type='checkbox'"+(progr[part]["insti"]?" checked":"")+"/>").attr("data-crit", "insti")));
+      row.append($("<td/>").append($("<input onclick='critChanged(this)' type='checkbox'"+(progr[part]["lingequi"]?" checked":"")+"/>").attr("data-crit", "lingequi")));
+      var require = progr[part]["require"];
+      first = true;
+      for (var withPart in chamb) {
+        var cell = $("<td>");
+        if (part!=withPart)
+          cell.append($("<input type='checkbox'"+($.inArray(withPart, require)!=-1?" checked":"")+" onclick='critChanged(this)'/>").attr("data-crit", "require").attr("data-withPart", withPart));
+        if (first)
+          cell.addClass("first");
+        row.append(cell);
+        first = false;
+      }
+      var reject = progr[part]["reject"];
+      first = true;
+      for (var withPart in chamb) {
+        var cell = $("<td>");
+        if (part!=withPart)
+          cell.append($("<input type='checkbox'"+($.inArray(withPart, reject)!=-1?" checked":"")+" onclick='critChanged(this)'/>").attr("data-crit", "reject").attr("data-withPart", withPart));
+        if (first)
+          cell.addClass("first");
+        row.append(cell);
+        first = false;
+      }
+      tab.append(row);
+    }
+    row = $("<tr id='allsel'/>");
+    row.append($("<th class='bortop'><small>Tout sélectionner</small></td>"));
+    row.append($("<td class='bortop'/>").append($("<input type='checkbox' onclick='allSelChanged(this)'/>").attr("data-crit", "consti")));
+    row.append($("<td class='bortop'/>").append($("<input type='checkbox' onclick='allSelChanged(this)'/>").attr("data-crit", "insti")));
+    row.append($("<td class='bortop'/>").append($("<input type='checkbox' onclick='allSelChanged(this)'/>").attr("data-crit", "lingequi")));
+    first = true;
+    for (var withPart in chamb) {
+      var cell = $("<td class='bortop'/>").append($("<input type='checkbox' onclick='allSelChanged(this)'/>").attr("data-crit", "require-"+withPart));
+      if (first)
+        cell.addClass("first");
+      row.append(cell);
+      first = false;
+    }
+    first = true;
+    for (var withPart in chamb) {
+      var cell = $("<td class='bortop'/>").append($("<input type='checkbox' onclick='allSelChanged(this)'/>").attr("data-crit", "reject-"+withPart));
+      if (first)
+        cell.addClass("first");
+      row.append(cell);
+      first = false;
+    }
+    tab.append(row);
+    
+    critInit();
+
+    var crit = $("#crit").empty();
+    crit.append("<tr><td>Les possiblités vont s'afficher ci-dessous</td></tr>");
+
+    $("#possible").empty();
+    computeCurrent();
+    showComputed();
+
+    hashChanged();
+  }
+
+  function loadCoalitions() {
+    // trier par nombre de partis desc
+    
+    coalitions = [];
+    for(var tCoa in tradCoa) {
+      // trouver les partis actuels
+      var arrParts = [];
+      for(var part in chamb) {
+        if ((part in tradCoa[tCoa]) || (famille[part] in tradCoa[tCoa]))
+          arrParts.push(part);
+      }
+      coalitions.push({name:tCoa,parts:arrParts});
+    }
+    for(var tCoa in specCoa) {
+      // trouver les partis actuels
+      var arrParts = [];
+      for(var part in chamb) {
+        if ((part in specCoa[tCoa]) || (famille[part] in specCoa[tCoa]))
+          arrParts.push(part);
+      }
+      coalitions.push({name:tCoa,parts:arrParts});
+    }
+    coalitions.sort(function(a, b) {
+        return (b.parts.length - a.parts.length);
+      });
+  }
+
+  function setCoa() {
+    var coaName = $('input[type=radio][name=coa]:checked').attr('value');
+    for(var i=0; i<coalitions.length ;i++) {
+      if (coalitions[i].name==coaName) {
+        var coa = coalitions[i];
+        
+        for(var j=0; j<inputs.length ;j++) {
+          var input = inputs[j];
+          input.checked = $.inArray(input.value, coa.parts) != -1;
+        }
+        computeCurrent();
+        showComputed();
+        majWarningColors();
+        break;
+      }
+    }
+  }
+
+  function change() {
+    $('input[type=radio][name=coa]').attr('checked', false);
+    var ret = computeCurrent();
+    showComputed();
+    majWarningColors();
+    var parts = ret[0];
+
+    var found;
+    for (var i=0; i<coalitions.length ;i++) {
+      var coalition = coalitions[i];
+      found = true;
+      for(var j=0; j<coalition.parts.length ;j++) {
+        coaPart = coalition.parts[j];
+        if (!(coaPart in parts) && coaPart in chamb) {
+          found = false;
+          break;
+        }
+      }
+      if (found) {
+        for(var part in parts) {
+          if ($.inArray(part, coalition.parts) == -1) {
+            found = false;
+            break;
+          }
+        }
+        if (found) {
+          $('input[type=radio][name=coa][value=\''+coalition.name+'\']').attr('checked', true);
+          break;
+        }
+      } 
+    }
+  }
+
+
+  var pmaj;
+  var pmaj23;
+  var pmajSpec;
+  var pMajNL;
+  var pMajFR;
+  var pformResp;
+  var familiesSplit;
+  var pcordonResp;
+  var pgagnantsResp;
+  var pperdantsResp;
+  var pbigfishResp;
+  var pbigfamResp;
+  var pinstiResp;
+
+  var totCham = 0;
+  var totSena = 0;
+  var coaCham = 0;
+  var coaSena = 0;
+  var totChamNL = 0;
+  var totSenaNL = 0;
+  var coaChamNL = 0;
+  var coaSenaNL = 0;
+  var totChamFR = 0;
+  var totSenaFR = 0;
+  var coaChamFR = 0;
+  var coaSenaFR = 0;
+  var countPart = 0;
+
+  function computeCurrent() {
+    totCham = 0;
+    totSena = 0;
+    coaCham = 0;
+    coaSena = 0;
+    totChamNL = 0;
+    totSenaNL = 0;
+    coaChamNL = 0;
+    coaSenaNL = 0;
+    totChamFR = 0;
+    totSenaFR = 0;
+    coaChamFR = 0;
+    coaSenaFR = 0;
+    familiesSplit = {};
+    var parts = {};
+    var coaFormation = {};
+    var maxNL = 0;
+    var maxFR = 0;
+    var fam = {};
+    pgagnantsResp = true;
+    pperdantsResp = true;
+    for(var i=0; i<inputs.length ;i++) {
+      var input = inputs[i];
+      var part = input.value;
+      var ch = chamb[part];
+      var se = sena[part];
+      totCham += ch;
+      totSena += se;
+      if (lang[part]=="NL") {
+        if(ch>maxNL)
+          maxNL = ch;
+        totChamNL += ch;
+        totSenaNL += se;
+      } else {
+        if(ch>maxFR)
+          maxFR = ch;
+        totChamFR += ch;
+        totSenaFR += se;
+        if (part==dePart)
+          totSenaFR--; // ne pas compter le sénateur germanophone dans le décompte de la majorité FR
+      }
+      var f = famille[part]?famille[part]:part;
+      fam[f] = fam[f]?fam[f]+ch:ch;
+      if (input.checked) {
+        coaCham += ch;
+        coaSena += se;
+        if (lang[part]=="NL") {
+          coaChamNL += ch;
+          coaSenaNL += se;
+        } else {
+          coaChamFR += ch;
+          coaSenaFR += se;
+          if (part==dePart)
+            coaSenaFR--; // ne pas compter le sénateur germanophone dans le décompte de la majorité FR
+        }
+        parts[part] = true;
+        if (famille[part])
+          coaFormation[famille[part]]=true;
+        if (part in perdants)
+          pperdantsResp = false;
+      } else {
+        if (part in gagnants)
+          pgagnantsResp = false;
+      }
+    }
+
+    pmaj = coaCham>totCham/2 && coaSena>totSena/2;
+    pmaj23 = coaCham>=2*totCham/3 && coaSena>=2*totSena/3;
+    pMajNL = coaChamNL>totChamNL/2 && coaSenaNL>totSenaNL/2;
+    pMajFR = coaChamFR>totChamFR/2 && coaSenaFR>totSenaFR/2;
+    var lingequi = pMajNL && pMajFR;
+    pmajSpec = pmaj23 && lingequi;
+    for(var family in coaFormation) {
+      // si un des partis de cette famille n'est pas dans la coalition, la marquer comme splittée
+      for (var part in chamb) {
+        if (famille[part]==family && !(part in parts)) {
+          familiesSplit[family] = false;
+        }
+      }
+    }
+
+
+    pinstiResp = true;
+    // pour chacun des partis de cette coalition
+    for(var part in parts) {
+      // vérifier que ses critères sont respectés
+      var crit = progr[part];
+      if ($("#checkInsti")[0].checked) {
+        if ((crit["consti"] && !pmaj23) || (crit["insti"] && !pmajSpec)) {
+          pinstiResp = false;
+          break;
+        }
+      }
+      if (crit["lingequi"] && (!pMajNL || !pMajFR)) {
+        pinstiResp = false;
+        break;
+      }
+      var require = crit["require"];
+      for(var j=0; j<require.length ;j++)
+        if (!(require[j] in parts)) {
+          pinstiResp = false;
+          break;
+        }
+      if (!pinstiResp)
+        break;
+      var reject = crit["reject"];
+      for(var k=0; k<reject.length ;k++)
+        if (reject[k] in parts) {
+          pinstiResp = false;
+          break;
+        }
+      if (!pinstiResp)
+        break;
+    }
+
+    pformResp = true;
+    for (var part in famille) {
+      if (part in chamb && famille[part] in coaFormation && !(part in parts)) {
+        pformResp = false;
+        break;
+      }
+    }
+    pcordonResp = true;
+    for(var sp in swartePiet) {
+      if (sp in parts) {
+        pcordonResp = false;
+        break;
+      }
+    }
+    pbigfishResp = true;
+    for(var part in chamb) {
+      if (!(part in parts)) {
+        var max;
+        if (lang[part]=="NL")
+          max = maxNL;
+        else
+          max = maxFR;
+        if (chamb[part]>=max) {
+          pbigfishResp = false;
+          break;
+        }
+      }
+    }
+    var maxFam = 0;
+    for(var f in fam) {
+      if (fam[f]>maxFam)
+        maxFam = fam[f];
+    }
+    pbigfamResp = true;
+    for(var part in chamb) {
+      if (!(part in parts)) {
+        var f = famille[part]?famille[part]:part;
+        if (fam[f]>=maxFam) {
+          pbigfamResp = false;
+          break;
+        }
+      }
+    }
+    countPart = 0;
+    for(var part in parts)
+      countPart++;
+    
+    return [parts,coaCham];
+  }
+
+  function showComputed() {
+    for(var i=0; i<inputs.length ;i++) {
+      var input = inputs[i];
+      var row = $(input).parent().parent();
+      if (input.checked)
+        row.css("background", color[input.value]);
+      else
+        row.css("background", "none");
+    }
+
+    $("#nbChamNL").text(coaChamNL);
+    $("#nbSenNL").text(coaSenaNL);
+    $("#nbChamFR").text(coaChamFR);
+    $("#nbSenFR").text(coaSenaFR);
+    $("#nbChamTot").text(coaCham);
+    $("#nbSenTot").text(coaSena);
+    $("#nbChamNLAv").text(totChamNL);
+    $("#nbSenNLAv").text(totSenaNL);
+    $("#nbChamFRAv").text(totChamFR);
+    $("#nbSenFRAv").text(totSenaFR);
+    $("#nbChamTotAv").text(totCham);
+    $("#nbSenTotAv").text(totSena);
+    $("#nbParts").text(countPart);
+    
+    
+    $("#maj")[0].checked = pmaj;
+    $("#maj23")[0].checked = pmaj23;
+    $("#majSpec")[0].checked = pmajSpec;
+    $("#majNL")[0].checked = pMajNL;
+    $("#majFR")[0].checked = pMajFR;
+    $("#form")[0].checked = pformResp;
+    $("#cordon")[0].checked = pcordonResp;
+    $("#gagnants")[0].checked = pgagnantsResp;
+    $("#perdants")[0].checked = pperdantsResp;
+    $("#bigfish")[0].checked = pbigfishResp;
+    $("#bigfamily")[0].checked = pbigfamResp;
+    $("#insti")[0].checked = pinstiResp;
+  }
+
+  
+  
+  
+  function critInit() {
+    progr = jQuery.extend(true, {}, progrInit);
+    // en plus des programmes des partis, on rajoute les partis gagnants (c'est souvent comme ça)
+    if (currentLeg.critCordon)
+      critCordon(true);
+    if (currentLeg.critWinners)
+      critWinners(true);
+    if (currentLeg.critLosers)
+      critLosers(true);
+    if (currentLeg.critBigFish)
+      critBigFish(true);
+    if (currentLeg.critFamilies)
+      critFamilies(true);
+    if (currentLeg.critBigFamily)
+      critBigFamily(true);
+    critInsti(currentLeg.critInsti);
+    
+    $("#hideRedun")[0].checked = currentLeg.hideRedun;
+    showHideRedun();
+  }  
+  
+  function critUpdate() {
+    // tableau
+    var rows = $("#tabProg tr[data-part]");
+    var critMissing = {};
+    for(var i=0; i<rows.length ;i++) {
+      var part = rows[i].getAttribute("data-part");
+      var cells = $(rows[i]).find("input[data-crit]");
+      for(var j=0; j<cells.length ;j++) {
+        var crit = cells[j].getAttribute("data-crit");
+        //alert(part+" "+crit);
+        if (crit=="require" || crit=="reject") {
+          var withPart = cells[j].getAttribute("data-withPart");
+          var checked = $.inArray(withPart, progr[part][crit])!=-1;
+          cells[j].checked = checked;
+          if (!checked)
+            critMissing[crit+"-"+withPart] = true;
+        } else {
+          var checked = progr[part][crit];
+          cells[j].checked = checked;
+          if (!checked)
+            critMissing[crit] = true;
+        }
+      }
+    }
+    // "tout sélectionné"
+    var cells = $("#allsel").find("input");
+    for(var i=0; i<cells.length ;i++) {
+      var crit = cells[i].getAttribute("data-crit");
+      cells[i].checked = !critMissing[crit];
+    }
+    // critères
+    $("#checkCordon")[0].checked = isCordon();
+    $("#checkWinners")[0].checked = isWinners();
+    $("#checkLosers")[0].checked = isLosers();
+    $("#checkBigFish")[0].checked = isBigFish();
+    $("#checkFamilies")[0].checked = isFamilies();
+    $("#checkBigFamily")[0].checked = isBigFamily();
+  }
+  
+  function critChanged(target) {
+    var part = target.parentNode.parentNode.getAttribute("data-part");
+    var crit = target.getAttribute("data-crit");
+    if (crit=="require" || crit=="reject") {
+      var withPart = target.getAttribute("data-withPart");
+      var index = $.inArray(withPart, progr[part][crit]);
+      if (target.checked && index==-1)
+        progr[part][crit].push(withPart);
+      else if (!target.checked && index!=-1)
+        progr[part][crit].splice(index, 1);
+    } else
+      progr[part][crit] = target.checked;
+    critUpdate();
+  }
+  
+  function allSelChanged(target) {
+    var crit = target.getAttribute("data-crit");
+    var io = crit.indexOf("-");
+    if (io==-1) {
+      for(var part in progr)
+        progr[part][crit] = target.checked;
+    } else {
+      var withPart = crit.substring(io+1);
+      crit = crit.substring(0, io);
+      for(var part in progr) {
+        var index = $.inArray(withPart, progr[part][crit]);
+        if (target.checked && index==-1)
+          progr[part][crit].push(withPart);
+        else if (!target.checked && index!=-1)
+          progr[part][crit].splice(index, 1);
+      }
+    }
+    critUpdate();
+  }
+  
+  function critCordon(checked) {
+    for(var piet in swartePiet) {
+      for(var part in progr) {
+        if (part==piet)
+          continue;
+        var reject = progr[part]["reject"];
+        var index = $.inArray(piet, reject);
+        if (checked) {
+          if (index==-1)
+            reject.push(piet);
+        } else {
+          if (index!=-1)
+            reject.splice(index,1);
+        }
+      }
+    }
+    
+    critUpdate();
+  }
+  
+  function isCordon() {
+    for(var piet in swartePiet) {
+      for(var part in progr) {
+        if (part==piet)
+          continue;
+        var reject = progr[part]["reject"];
+        var index = $.inArray(piet, reject);
+        if (index==-1)
+          return false;
+      }
+    }
+    return true;
+  }
+  
+  function critWinners(checked) {
+    for(var winner in gagnants) {
+      for(var part in progr) {
+        if (part!=winner) {
+          var require = progr[part]["require"];
+          var index = $.inArray(winner, require);
+          if (checked) {
+            if (index==-1)
+              require.push(winner);
+          } else {
+            if (index!=-1)
+              require.splice(index, 1);
+          }
+        }
+      }
+    }
+  
+    critUpdate();
+  }
+  
+  function isWinners() {
+    for(var winner in gagnants) {
+      for(var part in progr) {
+        if (part!=winner) {
+          var require = progr[part]["require"];
+          var index = $.inArray(winner, require);
+          if (index==-1)
+            return false;
+        }
+      }
+    }
+    return true;
+  }
+  
+  function critLosers(checked) {
+    for(var loser in perdants) {
+      for(var part in progr) {
+        if (part!=loser) {
+          var reject = progr[part]["reject"];
+          var index = $.inArray(loser, reject);
+          if (checked) {
+            if (index==-1)
+              reject.push(loser);
+          } else {
+            if (index!=-1)
+              reject.splice(index, 1);
+          }
+        }
+      }
+    }
+  
+    critUpdate();
+  }
+  
+  function isLosers() {
+    for(var loser in perdants) {
+      for(var part in progr) {
+        if (part!=loser) {
+          var reject = progr[part]["reject"];
+          var index = $.inArray(loser, reject);
+          if (index==-1)
+            return false;
+        }
+      }
+    }
+    return true;
+  }
+  
+  function critBigFish(checked) {
+    var maxNL = 0;
+    var maxFR = 0;
+    for(var part in chamb) {
+      var ch = chamb[part];
+      if (lang[part]=="NL") {
+        if(ch>maxNL)
+          maxNL = ch;
+      } else {
+        if(ch>maxFR)
+          maxFR = ch;
+      }    
+    }
+    for(var withPart in chamb) {
+      var max;
+      if (lang[withPart]=="NL")
+        max = maxNL;
+      else
+        max = maxFR;
+      if (chamb[withPart]>=max) {
+        for(var part in progr) {
+          if (part!=withPart) {
+            var require = progr[part]["require"];
+            var index = $.inArray(withPart, require);
+            if(checked) {
+              if (index==-1)
+                require.push(withPart);
+            } else {
+              if (index!=-1)
+                require.splice(index, 1);
+            }
+          }
+        }
+      }
+    }
+    
+    critUpdate();
+  }
+  
+  function isBigFish() {
+    var maxNL = 0;
+    var maxFR = 0;
+    for(var part in chamb) {
+      var ch = chamb[part];
+      if (lang[part]=="NL") {
+        if(ch>maxNL)
+          maxNL = ch;
+      } else {
+        if(ch>maxFR)
+          maxFR = ch;
+      }    
+    }
+    for(var withPart in chamb) {
+      var max;
+      if (lang[withPart]=="NL")
+        max = maxNL;
+      else
+        max = maxFR;
+      if (chamb[withPart]>=max) {
+        for(var part in progr) {
+          if (part!=withPart) {
+            var require = progr[part]["require"];
+            var index = $.inArray(withPart, require);
+            if (index==-1)
+              return false;
+          }
+        }
+      }
+    }
+    return true;
+  }
+  
+  function critFamilies(checked) {
+    for(var part in progr) {
+      var family = famille[part];
+      if (family) {
+        var require = progr[part]["require"];
+        for(var withPart in progr) {
+          if (part!=withPart && family==famille[withPart]) {
+            var index  =$.inArray(withPart, require);
+            if (checked) {
+              if (index==-1)
+                require.push(withPart);
+            } else {
+              if (index!=-1)
+                require.splice(index, 1);
+            }
+          }
+        }
+      }
+    }
+  
+    critUpdate();
+  }
+  
+  function isFamilies() {
+    for(var part in progr) {
+      var family = famille[part];
+      if (family) {
+        var require = progr[part]["require"];
+        for(var withPart in progr) {
+          if (part!=withPart && family==famille[withPart]) {
+            var index  =$.inArray(withPart, require);
+            if (index==-1)
+              return false;
+          }
+        }
+      }
+    }
+    return true;
+  }
+  
+  function critBigFamily(checked) {
+    var fam = {};
+    for(var part in chamb) {
+      var ch = chamb[part];
+      var f = famille[part]?famille[part]:part;
+      fam[f] = fam[f]?fam[f]+ch:ch;
+    }
+    var maxFam = 0;
+    for(var f in fam) {
+      if (fam[f]>maxFam)
+        maxFam = fam[f];
+    }
+    for(var withPart in chamb) {
+      var f = famille[withPart]?famille[withPart]:withPart;
+      if (fam[f]>=maxFam) {
+        for(var part in progr) {
+          if (part!=withPart) {
+            var require = progr[part]["require"];
+            var index = $.inArray(withPart, require)
+            if (checked) {
+              if (index==-1)
+                require.push(withPart);
+            } else {
+              if (index!=-1)
+                require.splice(index, 1);
+            }
+          }
+        }
+      }
+    }
+
+    critUpdate();
+  }
+  
+  function critInsti(checked) {
+    $("#checkInsti")[0].checked = checked;
+    var rows = $("#tabProg tr[data-part]");
+    for(var i=0; i<rows.length ;i++) {
+      var cells = $(rows[i]).find("input[data-crit]");
+      for(var j=0; j<cells.length ;j++) {
+        var crit = cells[j].getAttribute("data-crit");
+        if (crit=='consti' || crit=='insti')
+          cells[j].disabled = !checked;
+      }
+    }
+  }
+  
+  function isBigFamily() {
+    var fam = {};
+    for(var part in chamb) {
+      var ch = chamb[part];
+      var f = famille[part]?famille[part]:part;
+      fam[f] = fam[f]?fam[f]+ch:ch;
+    }
+    var maxFam = 0;
+    for(var f in fam) {
+      if (fam[f]>maxFam)
+        maxFam = fam[f];
+    }
+    for(var withPart in chamb) {
+      var f = famille[withPart]?famille[withPart]:withPart;
+      if (fam[f]>=maxFam) {
+        for(var part in progr) {
+          if (part!=withPart) {
+            var require = progr[part]["require"];
+            var index = $.inArray(withPart, require)
+            if (index==-1)
+              return false;
+          }
+        }
+      }
+    }
+    return true;
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  var possibs = {};
+  
+  function possible() {
+    var crit = $("#crit").empty();
+    crit.append("<tr><th>Ci-dessous les possibilités pour vos critères</th></tr>");
+    crit.append("<tr><td><small>Ces possiblités ne sont que mathématiques.<br/>Les négociations politiques peuvent bien évidemment réduire cette liste</small></td></tr>");
+    
+    $("#possible").empty();
+    var s = "<tr><th>Coalition</th>";
+    for(var part in chamb)
+      s += "<th style='background:"+color[part]+"'>"+part+"</th>";
+    $("#possible").append(s+"<th>Sièges</th><th>Partis</th><th></th></tr>");
+
+    $('input[type=radio][name=coa]').attr('checked', false);
+    for(var i=0; i<inputs.length ;i++)
+      inputs[i].checked = false;
+    possibs = {};
+    testWith(1);
+    $('input[type=radio][name=coa]').attr('checked', false);
+    for(var i=0; i<inputs.length ;i++)
+      inputs[i].checked = false;
+    $("#countSeats td").text("");
+    majWarningColors();
+    
+    s = "<tr><th>Coalition</th>";
+    for(var part in chamb)
+      s += "<th style='background:"+color[part]+"'>"+part+"</th>";
+    $("#possible").append(s+"<th>Sièges</th><th>Partis</th><th></th></tr>");
+    computeCurrent();
+    showComputed();
+    showHideRedun();
+  }
+
+  function compute() {
+    var res = computeCurrent();
+    if (!pmaj)
+      return;
+    var parts = res[0];
+    var takeInstiIntoAccount = $("#checkInsti")[0].checked;
+    
+    // pour chacun des partis de cette coalition
+    for(var part in parts) {
+      // vérifier que ses critères sont respectés
+      var crit = progr[part];
+      if (takeInstiIntoAccount) {
+        if ((crit["consti"] && !pmaj23) || (crit["insti"] && !pmajSpec))
+          return;
+      }
+      if (crit["lingequi"] && (!pMajNL || !pMajFR))
+        return;
+      var require = crit["require"];
+      for(var i=0; i<require.length ;i++)
+        if (!(require[i] in parts))
+          return;
+      var reject = crit["reject"];
+      for(var i=0; i<reject.length ;i++)
+        if (reject[i] in parts)
+          return;
+    }
+    
+      // si cette coalition est l'extension d'une qu'on a déjà, et qui a les caractéristiques de celle-ci, alors on passe celle-ci
+      // pour ça, je transforme la combinaison en entier (tableau de bits), ainsi que les caractéristiques
+      // et je stocke le tout dans un tableau associatif
+      
+      var redun = false;
+      var combi = 0;
+      for(var i=0; i<inputs.length ;i++) {
+        var input = inputs[i];
+        if (input.checked)
+          combi += Math.pow(2,i);
+      }
+      var cara = (pmaj?1:0)+(takeInstiIntoAccount?((pmaj23?2:0)+(pmajSpec?4:0)):0)+(pMajNL?8:0)+(pMajFR?16:0)+(pformResp?32:0)+(pcordonResp?64:0)+(pgagnantsResp?128:0)+(pperdantsResp?256:0)+(pbigfishResp?512:0)+(pbigfamResp?1024:0)+(pinstiResp?2048:0);
+      
+      for(var comb in possibs) {
+        var com = parseInt(comb);
+        if ((combi & com)==com) {
+          var car = possibs[comb];
+          if ((cara & car)==cara)
+            redun = true;
+        }
+      }
+
+      possibs[""+combi] = cara;
+
+      var shtml = "";
+      var count = 0;
+      var partsHash = "";
+      for(var part in chamb) {
+        if (part in parts) {
+          shtml += "<td style='background:"+color[part]+"'>"+part+"</td>";
+          partsHash += ","+part;
+          count++;
+        } else
+          shtml += "<td></td>";
+      }
+      var found;
+      for (var i=0; i<coalitions.length ;i++) {
+        var coalition = coalitions[i];
+        found = true;
+        for(var j=0; j<coalition.parts.length ;j++) {
+          coaPart = coalition.parts[j];
+          if (!(coaPart in parts) && coaPart in chamb) {
+            found = false;
+            break;
+          }
+        }
+        if (found) {
+          var plus = "";
+          var countPlus = 0;
+          for(var part in parts) {
+            if ($.inArray(part, coalition.parts) == -1) {
+              plus += " + "+part;
+              countPlus++;
+              if (countPlus>2) {
+                found = false
+                break;
+              }
+            }
+          }
+          if (found) {
+            shtml = "<td>"+coalition.name+plus+"</td>"+shtml;
+            break;
+          }
+        } 
+      }
+      if (!found)
+        shtml = "<td>Inconnue</td>"+shtml;
+      shtml += "<td class='numcell'>"+res[1]+"</td><td class='numcell'>"+count+"</td><td><a href='#"+partsHash.substring(1)+"'>voir</a></td>";
+      
+      return ["<tr"+(redun?" class='redun'":"")+">"+shtml+"</tr>",res[1]];
+  } 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+  function testWith(nb) {
+    var res = {};
+    addPart(nb, res);
+    
+    // prendre d'abord ceux qui ont le moins de sièges pour trouver les petites coalitions en premier
+    var count = 0;
+    for(var html in res)
+      if(res[html])
+        count++;
+    while(count>0) {
+      var added = {};
+      var min = -1;
+      for(var html in res) {
+        var seat = res[html];
+        if(seat && (min==-1 || min>seat))
+          min = res[html];
+      }
+      for(var html in res) {
+        if(min==res[html]) {
+          $("#possible").append(html);
+          added[html] = true;
+        }
+      }
+      for(var html in added)
+        res[html] = false;
+      count = 0;
+      for(var html in res)
+        if(res[html])
+          count++;
+    }
+
+    if (nb<inputs.length)
+      testWith(nb+1);
+  }
+
+  function addPart(nb, results) {
+    if(nb==0) {
+      var res = compute();
+      if(res)
+        results[res[0]] = res[1];
+    }
+    else {
+      var start = -1;
+      for(var i=0; i<inputs.length ;i++)
+        if (inputs[i].checked)
+           start = i;
+      for(var i=start+1; i<inputs.length ;i++) {
+        inputs[i].checked = true;
+        addPart(nb-1, results);
+        inputs[i].checked = false;
+      }
+    }
+  }
+
+
+
+  var green = "#BBFFBB";
+  var yellow = "#EEFFAA";
+  var red = "#FFBBBB";
+  var orange = "#FFDDBB";
+  var lightgreen = "#CCFFBB";
+  var lightorange = "#FFEEBB";
+
+  function majWarningColors() {
+    if ($("#maj")[0].checked)
+      $("#majTR").attr("style", "background:"+green);
+    else
+      $("#majTR").attr("style", "background:"+red);
+    if ($("#maj23")[0].checked)
+      $("#maj23TR").attr("style", "background:"+green);
+    else
+      $("#maj23TR").attr("style", "background:"+orange);
+    if ($("#majSpec")[0].checked)
+      $("#majSpecTR").attr("style", "background:"+green);
+    else
+      $("#majSpecTR").attr("style", "background:"+orange);
+
+
+    $("#majNLTR").attr("style", "background:"+($("#majNL")[0].checked?lightgreen:lightorange));
+    $("#majFRTR").attr("style", "background:"+($("#majFR")[0].checked?lightgreen:lightorange));
+    $("#formTR").attr("style", "background:"+($("#form")[0].checked?lightgreen:lightorange));
+    $("#cordonTR").attr("style", "background:"+($("#cordon")[0].checked?lightgreen:lightorange));
+    $("#gagnantsTR").attr("style", "background:"+($("#gagnants")[0].checked?lightgreen:lightorange));
+    $("#perdantsTR").attr("style", "background:"+($("#perdants")[0].checked?lightgreen:lightorange));
+    $("#bigfishTR").attr("style", "background:"+($("#bigfish")[0].checked?lightgreen:lightorange));
+    $("#bigfamilyTR").attr("style", "background:"+($("#bigfamily")[0].checked?lightgreen:lightorange));
+    $("#instiTR").attr("style", "background:"+($("#insti")[0].checked?lightgreen:lightorange));
+
+      
+    if ($("#nbChamNL").text()>$("#nbChamNLAv").text()/2)
+      $("#nbChamNL").attr("style", "background:"+green);
+    else
+      $("#nbChamNL").attr("style", "background:"+orange);
+    if ($("#nbSenNL").text()>$("#nbSenNLAv").text()/2)
+      $("#nbSenNL").attr("style", "background:"+green);
+    else
+      $("#nbSenNL").attr("style", "background:"+orange);
+    if ($("#nbChamFR").text()>$("#nbChamFRAv").text()/2)
+      $("#nbChamFR").attr("style", "background:"+green);
+    else
+      $("#nbChamFR").attr("style", "background:"+orange);
+    if ($("#nbSenFR").text()>$("#nbSenFRAv").text()/2)
+      $("#nbSenFR").attr("style", "background:"+green);
+    else
+      $("#nbSenFR").attr("style", "background:"+orange);
+
+    if ($("#nbChamTot").text()>$("#nbChamTotAv").text()/2) {
+      if ($("#nbChamTot").text()>=$("#nbChamTotAv").text()*2/3)
+        $("#nbChamTot").attr("style", "background:"+green);
+      else
+        $("#nbChamTot").attr("style", "background:"+yellow);
+    } else
+      $("#nbChamTot").attr("style", "background:"+orange);
+
+    if ($("#nbSenTot").text()>$("#nbSenTotAv").text()/2) {
+      if ($("#nbSenTot").text()>=$("#nbSenTotAv").text()*2/3)
+        $("#nbSenTot").attr("style", "background:"+green);
+      else
+        $("#nbSenTot").attr("style", "background:"+yellow);
+    } else
+      $("#nbSenTot").attr("style", "background:"+orange);
+  }
+  
+  function showHideRedun() {
+    //$(".redun").css("visibility", $("#hideRedun")[0].checked?"collapse":"visible");
+    $(".redun").css("display", $("#hideRedun")[0].checked?"none":"table-row");
+  }
+  
+  window.onhashchange = hashChanged;
+  function hashChanged() {
+    if (location.hash.length!=0) {
+      var tParts = location.hash.substring(1).split(",");
+
+      for(var i=0; i<inputs.length ;i++) {
+        //alert(($.inArray(inputs[i].value, tParts))+" "+location.hash);
+        inputs[i].checked = $.inArray(inputs[i].value, tParts)!=-1;
+      }
+      change();
+      $(".tabbertabdefault").removeClass("tabbertabdefault");
+      $('#tabber')[0].tabber.tabShow(0);
+      window.scrollTo(0,0);
+    }
+  }
+</script>
+
+</head>
+<body>
+  <h3>Toi aussi, forme ton Gouvernement Belge</h3>
+
+<input class="btLeg" id="leg1999" type="button" value="1999" onclick="loadTab(leg1999);$('#leg1999').css('background-color','lightblue');"/>
+<input class="btLeg" id="leg2003" type="button" value="2003" onclick="loadTab(leg2003);$('#leg2003').css('background-color','lightblue');"/>
+<input class="btLeg" id="leg2007" type="button" value="2007" onclick="loadTab(leg2007);$('#leg2007').css('background-color','lightblue');"/>
+<input class="btLeg" id="leg2010" type="button" value="2010" onclick="loadTab(leg2010);$('#leg2010').css('background-color','lightblue');" style="background-color:lightblue"/>
+
+<div class="tabber" id="tabber">
+
+     <div class="tabbertab">
+	  <h2>Tester une coalition</h2>
+  <div><br>Sélectionnez les partis de votre coalition, ou choisissez une des coalitions traditionelles, et voyez si c'est mathématiquement possible.</div>
+  <table class="centerTable"><tr><td style="border:0px;vertical-align:top;"><table id="tab"></table></td>
+  <td style="border:0px"><table id="coaTab"></table></td></tr></table>
+  
+  <br/>
+  <table class="centerTable" style="border:0px;"><tr><td style="border:0px;"><table id="result">
+  <tr id="majTR" style="background:#FFBBBB" title="Nécessaire à la formation d'un gouvernement"><th>Majorité ordinaire</th><td><input id="maj" type="checkbox" onclick="majWarningColors()"/></td></tr>
+  <tr id="maj23TR" style="background:#FFDDBB" title="Nécessaire à une révision de la Constitution"><th>Majorité des 2/3</th><td><input id="maj23" type="checkbox" onclick="majWarningColors()"/></td></tr>
+  <tr id="majSpecTR" style="background:#FFDDBB" title="Nécessaire pour modifier les principales lois institutionnelles voire linguistiques. Requiert la majorité des deux tiers mais aussi la majorité ordinaire (absolue) dans chaque groupe linguistique de chaque assemblée"><th>Majorité spéciale</th><td><input id="majSpec" type="checkbox" onclick="majWarningColors()"/></td></tr>
+  <tr title="La majorité simple dans le groupe linguistique néerlandophone. Politiquement utile, même si ce n’est pas constitutionnellement requis pour la formation d'un gouvernement."><td>Majorité ordinaire (groupe NL)</td><td id="majNLTR"><input id="majNL" type="checkbox"/></td></tr>
+  <tr title="La majorité simple dans le groupe linguistique francophone. Politiquement utile, même si ce n’est pas constitutionnellement requis pour la formation d'un gouvernement."><td>Majorité ordinaire (groupe FR)</td><td id="majFRTR"><input id="majFR" type="checkbox"/></td></tr>
+  <tr title="Respecte les exclusives annoncées par certains partis. En l'occurence : VB (par plusieurs partis)"><td>Respecte le cordon sanitaire</td><td id="cordonTR"><input id="cordon" type="checkbox"/></td></tr>
+  <tr title="Inclut les partis ayant fait la plus grosse progression. En l'occurence (élections 2010) : N-VA, PS"><td>Inclut les gagnants électoraux</td><td id="gagnantsTR"><input id="gagnants" type="checkbox"/></td></tr>
+  <tr title="Exclut les partis ayant fait la plus grosse chute. En l'occurence (élections 2010) : Open Vld, MR, VB (-5 sièges à la Chambre)"><td>Exclut les perdants électoraux</td><td id="perdantsTR"><input id="perdants" type="checkbox"/></td></tr>
+  <tr title="Inclut les deux partis de chaque groupe linguistique ayant la majorité relative. En l'occurence (élections 2010) : N-VA, PS"><td>Inclut les partis majoritaires</td><td id="bigfishTR"><input id="bigfish" type="checkbox"/></td></tr>
+  <tr title="Évite que les familles politiques soient divisées entre majorité et opposition"><td>Respecte les familles politiques</td><td id="formTR"><input id="form" type="checkbox"/></td></tr>
+  <tr title="Inclut la famille politique qui engrenge la majorité relative au niveau fédéral. En l'occurence (élections 2010) : PS + sp.a (39 sièges à la Chambre)"><td>Inclut la famille majoritaire</td><td id="bigfamilyTR"><input id="bigfamily" type="checkbox"/></td></tr>
+  <tr title="Est compatible avec tous les critères du tableau de l'onglet «Voir toutes les coalitions possibles»"><td>Respecte les programmes</td><td id="instiTR"><input id="insti" type="checkbox"/></td></tr>
+  </table></td><td style="border:0px;vertical-align:top;">
+  <table id="countSeats">
+  <tr><th rowspan="2">Sièges</th><th colspan="2">Chambre</th><th colspan="2">Sénat</th></tr>
+  <tr><th>confiants</th><th>dispo.</th><th>confiants</th><th>dispo.</th></tr>
+  <tr><th>Groupe NL</th><td id="nbChamNL" class='numcell'></td><td id="nbChamNLAv" class='numcell'></td><td id="nbSenNL" class='numcell'></td><td id="nbSenNLAv" class='numcell'></td></tr>
+  <tr><th>Groupe FR</th><td id="nbChamFR" class='numcell'></td><td id="nbChamFRAv" class='numcell'></td><td id="nbSenFR" class='numcell'></td><td id="nbSenFRAv" class='numcell'></td></tr>
+  <tr><th>Total</th><td id="nbChamTot" class='numcell'></td><td id="nbChamTotAv" class='numcell'></td><td id="nbSenTot" class='numcell'></td><td id="nbSenTotAv" class='numcell'></td></tr>
+    <tr><th>Nombre de partis</th><td colspan="4" id="nbParts" class='numcell'></td></tr>
+  </table></td></table>
+     </div>
+
+
+     <div class="tabbertab tabbertabdefault">
+	  <h2>Voir toutes les coalitions possibles</h2>
+  <div><br>Sélectionnez les critères que vous souhaitez voir respectés, et affichez toutes les coalitions possibles en cliquant sur le bouton ci-dessous</div>
+  <br/><input type="button" value="Réinitialiser" onclick="critInit()" title="Réeinitaliser avec les critères que je considère comme les plus propables"/><br/>
+  <label><input type="checkbox" id="checkCordon" onclick="critCordon(checked)"/>Respecter le cordon sanitaire</label><br/>
+  <label><input type="checkbox" id="checkWinners" onclick="critWinners(checked)"/>Inclure les gagnants électoraux</label><br/>
+  <label><input type="checkbox" id="checkLosers" onclick="critLosers(checked)"/>Exclure les perdants électoraux</label><br/>
+  <label><input type="checkbox" id="checkBigFish" onclick="critBigFish(checked)"/>Inclure les partis majoritaires</label><br/>
+  <label><input type="checkbox" id="checkFamilies" onclick="critFamilies(checked)"/>Respecter les familles politiques</label><br/>
+  <label><input type="checkbox" id="checkBigFamily" onclick="critBigFamily(checked)"/>Inclure la famille majoritaire</label><br/>
+  <label><input type="checkbox" id="checkInsti" onclick="critInsti(checked)"/>Tenir compte des programmes institutionnels</label><br/>
+  <table id="tabProg"></table>
+  <br/>
+  <div style="text-align:center">
+  <input type="button" value="Afficher les gouvernements possibles selon ces critères" onclick="possible()"/>
+  </div>
+  <br><br><table id="crit"><tr><td>Les possiblités vont s'afficher ci-dessous</td></tr></table><br>  
+  <label title="Cache les coalitions qui seraient l'extension d'une qu'on a déjà dans la liste, et qui inclut donc des partis non nécessaires"><span>Cacher les coalitions redondantes</span><input id="hideRedun" type="checkbox" checked="true" onclick="showHideRedun()"/></label>
+  <table id="possible"></table>
+     </div>
+
+
+</div>
+
+  
+  <br><br><footer><a href="mailto:leunen.d@gmail.com">contact</a><br/>Merci à Vincent de Coorebyter pour ses précieux conseils</footer>
+<script>
+  loadTab(leg2010);
+  document.getElementById("leg2010").setAttribute("style", "background-color:lightblue");
+</script>
+</body>
+</html>

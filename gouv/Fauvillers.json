@@ -1,0 +1,17 @@
+{
+  "sieges": {
+    "SERVIR":11,
+    "HORIZON 2018":5
+  },
+   progrInit : {
+    "SERVIR":{
+      "require":[],
+      "reject":[]
+    },
+    "HORIZON 2018":{
+      "require":[],
+      "reject":[]
+    }
+   }
+  
+}
