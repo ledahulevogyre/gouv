@@ -491,6 +491,58 @@ footer {
    hideRedun : true
   };
 
+  // 2019
+  var leg2019 = {
+   parl : {
+    "PS":20,
+    "MR":16,
+    "ecolo":20,
+    "CDh":7,
+    "PTB":12
+   },
+   gagnants : { // progressions
+    "ecolo":true,
+    "PTB":true
+   },
+   perdants : { // régressions
+    "PS":true,
+    "CDh":true,
+    "MR":true
+   },
+   progrInit : {
+    "PS":{
+      require:[],
+      reject:[]
+    },
+    "MR":{
+      require:[],
+      reject:[]
+    },
+    "CDh":{
+      require:[],
+      reject:[]
+    },
+    "ecolo":{
+      require:[],
+      reject:[]
+    },
+    "PTB":{
+      require:[],
+      reject:[]
+    }
+   },
+   specCoa : {
+   },
+   critCordon : true,
+   critWinners : false,
+   critLosers : false,
+   critBigFish : false,
+   critFamilies : true,
+   critBigFamily : true,
+   critInsti : false,
+   hideRedun : true
+  };
+  
 
   var currentLeg;
 
@@ -525,7 +577,8 @@ footer {
     "SP":"NL",
     "AGALEV":"NL",
     "PSC":"FR",
-    "VU":"NL"
+    "VU":"NL",
+    "PTB":"FR"
   };
   var color = {
     "CD&V N-VA":"#F89734",
@@ -549,7 +602,8 @@ footer {
     "SP":"#FF0B14",
     "AGALEV":"#A3C02A",
     "PSC":"#FF5400",
-    "VU":"#FCB340"
+    "VU":"#FCB340",
+	"PTB":"#B30000"
   };
   
   var famille = {
@@ -1695,6 +1749,7 @@ footer {
 <input class="btLeg" id="leg2003" type="button" value="2003" onclick="loadTab(leg2003);$('#leg2003').css('background-color','lightblue');"/>
 <input class="btLeg" id="leg2007" type="button" value="2007" onclick="loadTab(leg2007);$('#leg2007').css('background-color','lightblue');"/-->
 <input class="btLeg" id="leg2009" type="button" value="2009" onclick="loadTab(leg2009);$('#leg2009').css('background-color','lightblue');" style="background-color:lightblue"/>
+<input class="btLeg" id="leg2019" type="button" value="2019" onclick="loadTab(leg2019);$('#leg2019').css('background-color','lightblue');" />
 
 <div class="tabber" id="tabber">
 
@@ -1756,7 +1811,7 @@ footer {
   <br><br><footer><a href="mailto:leunen.d@gmail.com">contact</a><br/>Merci à Vincent de Coorebyter pour ses précieux conseils</footer>
 <script>
   loadTab(leg2009);
-  document.getElementById("leg2010").setAttribute("style", "background-color:lightblue");
+  document.getElementById("leg2009").setAttribute("style", "background-color:lightblue");
 </script>
 </body>
 </html>
