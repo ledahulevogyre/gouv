@@ -2023,12 +2023,21 @@ progrInit : {
 	  var balancedFR = (pProportionChambFR>=.5&&pProportionSenatFR>=.5);
 	  var notBalanced = !balancedNL || !balancedFR;
 	  var sPropr = "";	
-	  if (notBalanced)
+	  if (notBalanced) {
 	    var sPropr = "Ne respecte pas l&apos;équilibre linguistique ! Chambre nl:"+Math.round(pProportionChambNL*100)+"% Chambre fr:"+Math.round(pProportionChambFR*100)+"% Sénat nl:"+Math.round(pProportionSenatNL*100)+"% Sénat fr:"+Math.round(pProportionSenatFR*100)+"%";
+	  }
+	  var sProprNL = "";	
+	  if (!balancedNL) {
+	    var sProprNL = "Chambre nl:"+Math.round(pProportionChambNL*100)+"% Sénat nl:"+Math.round(pProportionSenatNL*100)+"%";
+	  }
+	  var sProprFR = "";	
+	  if (!balancedFR) {
+	    var sProprFR = "NChambre fr:"+Math.round(pProportionChambFR*100)+"% Sénat fr:"+Math.round(pProportionSenatFR*100)+"%";
+	  }
       //shtml += "<td title='"+sPropr+"' class='numcell"+(notBalanced?" notbalanced":"")+"'>"+res[1]+"</td><td class='numcell'>"+count+"</td><td><a href='#"+partsHash.substring(1)+"'>voir</a></td>";
-      shtml += "<td title='"+sPropr+"' class='numcell"+(notBalanced?" notbalanced":"")+"'>"+res[1]+"</td>";
-      shtml += "<td class='numcell"+(!balancedNL?" notbalanced":"")+"'>"+coaChamNL+"</td>";
-      shtml += "<td class='numcell"+(!balancedFR?" notbalanced":"")+"'>"+coaChamFR+"</td>";
+      shtml += "<td title='"+sPropr+"' class='numcell'>"+res[1]+"</td>";
+      shtml += "<td title='"+sProprNL+"' class='numcell"+(!balancedNL?" notbalanced":"")+"'>"+coaChamNL+"</td>";
+      shtml += "<td title='"+sProprFR+"' class='numcell"+(!balancedFR?" notbalanced":"")+"'>"+coaChamFR+"</td>";
 	  shtml += "<td class='numcell'>"+count+"</td>";
 	  shtml += "<td"+(isActualGouv?" title='Coalition du gouvernement' style='background-color:pink'":"")+"><a href='#"+partsHash.substring(1)+"'>voir</a></td>";
 
