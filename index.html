@@ -52,6 +52,9 @@ footer {
 .notbalanced {
   background-color:red;
 }
+#minLangPC {
+  width: 4em;
+}
 </style>
 <link rel="stylesheet" href="tabber.css" TYPE="text/css" MEDIA="screen">
 <script src="jquery-1.5.1.min.js"></script>
@@ -1911,6 +1914,11 @@ progrInit : {
       return;
     var parts = res[0];
     var takeInstiIntoAccount = $("#checkInsti")[0].checked;
+	var minLangPC = $("#minLangPC")[0].value/100;
+	
+	if (minLangPC>pProportionChambNL || minLangPC>pProportionChambFR) {
+	  return;
+	}
     
     // pour chacun des partis de cette coalition
     for(var part in parts) {
@@ -2026,18 +2034,15 @@ progrInit : {
 	  if (notBalanced) {
 	    var sPropr = "Ne respecte pas l&apos;équilibre linguistique ! Chambre nl:"+Math.round(pProportionChambNL*100)+"% Chambre fr:"+Math.round(pProportionChambFR*100)+"% Sénat nl:"+Math.round(pProportionSenatNL*100)+"% Sénat fr:"+Math.round(pProportionSenatFR*100)+"%";
 	  }
-	  var sProprNL = "";	
-	  if (!balancedNL) {
-	    var sProprNL = "Chambre nl:"+Math.round(pProportionChambNL*100)+"% Sénat nl:"+Math.round(pProportionSenatNL*100)+"%";
-	  }
-	  var sProprFR = "";	
-	  if (!balancedFR) {
-	    var sProprFR = "NChambre fr:"+Math.round(pProportionChambFR*100)+"% Sénat fr:"+Math.round(pProportionSenatFR*100)+"%";
-	  }
+	  var sProprNL = "Chambre nl:"+Math.round(pProportionChambNL*100)+"% Sénat nl:"+Math.round(pProportionSenatNL*100)+"%";
+      var sProprFR = "NChambre fr:"+Math.round(pProportionChambFR*100)+"% Sénat fr:"+Math.round(pProportionSenatFR*100)+"%";
       //shtml += "<td title='"+sPropr+"' class='numcell"+(notBalanced?" notbalanced":"")+"'>"+res[1]+"</td><td class='numcell'>"+count+"</td><td><a href='#"+partsHash.substring(1)+"'>voir</a></td>";
       shtml += "<td title='"+sPropr+"' class='numcell'>"+res[1]+"</td>";
-      shtml += "<td title='"+sProprNL+"' class='numcell"+(!balancedNL?" notbalanced":"")+"'>"+coaChamNL+"</td>";
-      shtml += "<td title='"+sProprFR+"' class='numcell"+(!balancedFR?" notbalanced":"")+"'>"+coaChamFR+"</td>";
+      //shtml += "<td title='"+sProprNL+"' class='numcell"+(!balancedNL?" notbalanced":"")+"'>"+coaChamNL+"</td>";
+	  var colorNL = (pProportionChambNL>=.5?"00FF":"FF00")+"00"+Math.round(pProportionChambNL>=.5?(pProportionChambNL-.5)*512:-(pProportionChambNL-.5)*512).toString(16);
+	  shtml += "<td title='"+sProprNL+"' class='numcell' style='background-color:#"+colorNL+"'>"+coaChamNL+"</td>";
+	  var colorFR = (pProportionChambFR>=.5?"00FF":"FF00")+"00"+Math.round(pProportionChambFR>=.5?(pProportionChambFR-.5)*512:-(pProportionChambFR-.5)*512).toString(16);
+      shtml += "<td title='"+sProprFR+"' class='numcell' style='background-color:#"+colorFR+"'>"+coaChamFR+"</td>";
 	  shtml += "<td class='numcell'>"+count+"</td>";
 	  shtml += "<td"+(isActualGouv?" title='Coalition du gouvernement' style='background-color:pink'":"")+"><a href='#"+partsHash.substring(1)+"'>voir</a></td>";
 
@@ -2265,6 +2270,7 @@ progrInit : {
   <label><input type="checkbox" id="checkFamilies" onclick="critFamilies(checked)"/>Respecter les familles politiques</label><br/>
   <label><input type="checkbox" id="checkBigFamily" onclick="critBigFamily(checked)"/>Inclure la famille majoritaire</label><br/>
   <label><input type="checkbox" id="checkInsti" onclick="critInsti(checked)"/>Tenir compte des programmes institutionnels</label><br/>
+  <label><input type="number" id="minLangPC" min="0" max="100" value="30"/>Poucentage minimal de sièges par groupe linguisitique</label><br/>
   <table id="tabProg"></table>
   <br/>
   <div style="text-align:center">
