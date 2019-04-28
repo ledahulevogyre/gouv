@@ -604,18 +604,18 @@ footer {
   // 2014
   var leg2014 = {
    chamb : {
-    "N-VA":33,
-    "PS":23,
-    "MR":20,
-    "CD&V":18,
-    "Open Vld":14,
-    "sp.a":13,
-    "CDh":9,
+    "PTB-GO !":2,
     "ecolo":6,
     "GROEN!":6,
-    "VB":3,
+    "PS":23,
+    "sp.a":13,
+    "CD&V":18,
+    "CDh":9,
     "FDF":2,
-    "PTB-GO !":2,
+    "MR":20,
+    "Open Vld":14,
+    "N-VA":33,
+    "VB":3,
     "PP":1
    },
    sena : {
@@ -736,7 +736,7 @@ footer {
    },
    specCoa : {
     "miroir (des exécutifs régionaux)":{"CD&V":true, "N-VA":true,"PS":true, "CDh":true},
-    "centre-droit":{"CD&V":true, "N-VA":true, "CDh":true, "MR":true},
+    "centre-droit diminuée":{"CD&V":true, "N-VA":true, "CDh":true, "MR":true},
     "grande suédoise":{"CD&V":true, "N-VA":true, "Open Vld":true, "MR":true, "CDh":true},
     "suédoise ou kamikaze":{"CD&V":true, "N-VA":true, "Open Vld":true, "MR":true}
    },
@@ -756,18 +756,18 @@ footer {
   // 2019?
   var leg2019 = {
    chamb : {
-    "N-VA":27,//28,//23,
-    "PS":20,//18,//19,
-    "MR":13,//14,//17,
-    "CD&V":14,//14,//19,
-    "Open Vld":12,//12,//14,
-    "sp.a":11,//9,//9,
-    "CDh":4,//5,//8,
+    "PTB":12,//8,//5
     "ecolo":16,//14,//11,
     "GROEN!":12,//15,//12,
-    "VB":8,//8,//10,
+    "PS":20,//18,//19,
+    "sp.a":11,//9,//9,
+    "CDh":4,//5,//8,
+    "CD&V":14,//14,//19,
     "DéFI":1,//3,//3,
-    "PTB":12,//8,//5
+    "MR":13,//14,//17,
+    "Open Vld":12,//12,//14,
+    "N-VA":27,//28,//23,
+    "VB":8,//8,//10,
     "PP":0//2//0
    },
    sena : {
@@ -874,7 +874,7 @@ progrInit : {
     },
     "DéFI":{
       require:[],
-      reject:["VB"],
+      reject:["VB", "N-VA"],
       consti:false,
       insti:false,
       lingequi:false
@@ -888,7 +888,7 @@ progrInit : {
     }
    },
    specCoa : {
-    "centre-droit":{"CD&V":true, "N-VA":true, "CDh":true, "MR":true},
+    "centre-droit diminuée":{"CD&V":true, "N-VA":true, "CDh":true, "MR":true},
     "grande suédoise":{"CD&V":true, "N-VA":true, "Open Vld":true, "MR":true, "CDh":true},
     "suédoise ou kamikaze":{"CD&V":true, "N-VA":true, "Open Vld":true, "MR":true}
    },
@@ -1013,6 +1013,7 @@ progrInit : {
     "violette":     {"socialistes":true,"libéraux":true},
     "turquoise":    {"libéraux":true   ,"verts":true},
     "orange bleue": {"libéraux":true   ,"centristes":true},
+    "centre-droit":{"libéraux":true   ,"centristes":true, "N-VA":true},
     "bourguignonne": {"libéraux":true   ,"N-VA":true, "sp.a":true},
 
     "lilas ou arménienne":{"libéraux":true,"centristes":true,"PS":true},
