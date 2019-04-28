@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=windows-1252" />
-<title>Quelles coalitions possibles ?</title>
+<title>Quelles coalitions possibles au Gouvernement Flamand ?</title>
 <style>
 body {
   font-family : Helvetica, Geneva, Arial, SunSans-Regular, sans-serif;
@@ -55,478 +55,54 @@ footer {
 <script type="text/javascript" src="tabber-minimized.js"></script>
 <script>
   
-  /*
-  // 1999
-  var leg1999 = {
-   chamb : {
-    "VLD":23,   
-    "CVP":22,   
-    "PS":19,    
-    "MR":18,    
-    "VB":15,    
-    "SP":14,    
-    "ecolo":11, 
-    "PSC":10,   
-    "AGALEV":9, 
-    "VU":8,     
-    "FN":1      
-   },
-  sena : {
-    "VLD":12,
-    "CVP":10,
-    "PS":10,
-    "MR":9,
-    "VB":6,
-    "SP":7,
-    "ecolo":6,
-    "AGALEV":4,
-    "PSC":5,
-    "VU":2,
-    "FN":0
-   },
-   dePart : "PS", // le parti du sénateur germanophone (siège à décompter pour atteindre la majorité francophone)
-   gagnants : { // progressions
-    "ecolo":true,
-    "AGALEV":true
-   },
-   perdants : { // progressions
-    "CVP":true
-   },
-   progrInit : {
-    "VLD":{
-      require:[],
-      reject:["VB"],
-      consti:false,
-      insti:false,
-      lingequi:true
-    },
-    "CVP":{
-      require:[],
-      reject:["VB"],
-      consti:false,
-      insti:false,
-      lingequi:true
-    },
-    "SP":{
-      require:[],
-      reject:["VB"],
-      consti:false,
-      insti:false,
-      lingequi:true
-    },
-    "VB":{
-      require:[],
-      reject:[],
-      consti:false,
-      insti:false,
-      lingequi:true
-    },
-    "AGALEV":{
-      require:["ecolo"],
-      reject:["VB"],
-      consti:false,
-      insti:false,
-      lingequi:true
-    },
-    "VU":{
-      require:[],
-      reject:["VB"],
-      consti:false,
-      insti:false,
-      lingequi:true
-    },
-    "PS":{
-      require:[],
-      reject:["VB"],
-      consti:false,
-      insti:false,
-      lingequi:true
-    },
-    "MR":{
-      require:[],
-      reject:["VB"],
-      consti:false,
-      insti:false,
-      lingequi:true
-    },
-    "PSC":{
-      require:[],
-      reject:["VB"],
-      consti:false,
-      insti:false,
-      lingequi:true
-    },
-    "ecolo":{
-      require:["AGALEV"],
-      reject:["VB"],
-      consti:false,
-      insti:false,
-      lingequi:true
-    },
-    "FN":{
-      require:[],
-      reject:["VB"],
-      consti:false,
-      insti:false,
-      lingequi:true
-    }
-   },
-   specCoa : {},
-   
-   critCordon : true,
-   critWinners : true,
-   critLosers : true,
-   critBigFish : true,
-   critFamilies : true,
-   critBigFamily : true,
-   critInsti : false,
-   hideRedun : true,
-   actualGouv : {"VLD":true, "MR":true, "PS":true, "SP":true, "Agalev":true, "ecolo":true},
-   actualRefoGouv : {}
-  };
-
-
-  // 2003
-  var leg2003 = {
-   chamb : {
-    "VLD":25,   // +2
-    "sp.a-spirit":23,    // +9
-    "CD&V":21,   // -1
-    "PS":25,    // +6
-    "VB":18,    // +3
-    "MR":24,    // +6
-    "CDh":8,   // -2
-    "N-VA":1,     // -7
-    "ecolo":4, // -5
-    "FN":1     
-   },
-  sena : {
-    "VLD":11,   // +2
-    "sp.a-spirit":12,    // +9
-    "CD&V":9,   // -1
-    "PS":11,    // +6
-    "VB":9,    // +3
-    "MR":11,    // +6
-    "CDh":4,   // -2
-    "N-VA":0,     // -7
-    "ecolo":2, // -5
-    "FN":2
-   },
-   dePart : "MR", // le parti du sénateur germanophone (siège à décompter pour atteindre la majorité francophone)
-   gagnants : { // progressions
-    "sp.a-spirit":true,
-    "PS":true
-   },
-   perdants : { // progressions
-    "ecolo":true
-   },
-   progrInit : {
-    "VLD":{
-      require:[],
-      reject:["VB"],
-      consti:false,
-      insti:false,
-      lingequi:true
-    },
-    "CD&V":{
-      require:["N-VA"],
-      reject:["VB"],
-      consti:false,
-      insti:false,
-      lingequi:true
-    },
-    "sp.a-spirit":{
-      require:[],
-      reject:["VB"],
-      consti:false,
-      insti:false,
-      lingequi:true
-    },
-    "VB":{
-      require:[],
-      reject:[],
-      consti:false,
-      insti:false,
-      lingequi:true
-    },
-    "AGALEV":{
-      require:["ecolo"],
-      reject:["VB"],
-      consti:false,
-      insti:false,
-      lingequi:true
-    },
-    "N-VA":{
-      require:["CD&V"],
-      reject:["VB"],
-      consti:false,
-      insti:false,
-      lingequi:true
-    },
-    "PS":{
-      require:[],
-      reject:["VB"],
-      consti:false,
-      insti:false,
-      lingequi:true
-    },
-    "MR":{
-      require:[],
-      reject:["VB"],
-      consti:false,
-      insti:false,
-      lingequi:true
-    },
-    "CDh":{
-      require:[],
-      reject:["VB"],
-      consti:false,
-      insti:false,
-      lingequi:true
-    },
-    "ecolo":{
-      require:["AGALEV"],
-      reject:["VB"],
-      consti:false,
-      insti:false,
-      lingequi:true
-    },
-    "FN":{
-      require:[],
-      reject:["VB"],
-      consti:false,
-      insti:false,
-      lingequi:true
-    }
-   },
-   specCoa : {},
-   critCordon : true,
-   critWinners : true,
-   critLosers : true,
-   critBigFish : true,
-   critFamilies : true,
-   critBigFamily : true,
-   critInsti : false,
-   hideRedun : true,
-   actualGouv : {"VLD":true, "MR":true, "PS":true, "sp.a-spirit":true},
-   actualRefoGouv : {}
-  };
-
-  var leg2007 = {
-   chamb : {
-    "CD&V":23, // difficile de savoir comment se répartissent cd&v et nva dont le cartel a explosé en cours de législature
-    "MR":23,
-    "PS":20, //-12
-    "Open Vld":18, //+5
-    "VB":17, // un député est passé de VB à NVA en cours de législature (je le compte ici dans VB)
-    "sp.a":14,
-    "CDh":10,
-    "ecolo":8,
-    "N-VA":7, // difficile de savoir comment se répartissent cd&v et nva dont le cartel a explosé en cours de législature + un député est passé de VB à NVA  (je le compte ici dans VB)
-    "LDd":5,
-    "GROEN!":4,
-    "FN":1
-   },
-   sena : {
-    "CD&V":12, //+7
-    "MR":10,
-    "PS":9, //-12
-    "Open Vld":9, //+5
-    "VB":8, //+4
-    "sp.a":6,
-    "CDh":5,
-    "ecolo":5,
-    "N-VA":2, // -20
-    "LDd":1,
-    "GROEN!":3,
-    "FN":1
-   },
-   dePart : "PS", // le parti du sénateur germanophone (siège à décompter pour atteindre la majorité francophone)
-   gagnants : { // progressions
-    "CD&V":true
-   },
-   perdants : { // progressions
-     "sp.a":true
-   },
-   progrInit : {
-    "N-VA":{
-      require:["CD&V"],
-      reject:["VB"],
-      consti:true,
-      insti:true,
-      lingequi:true
-    },
-    "CD&V":{
-      require:["N-VA"],
-      reject:["VB"],
-      consti:true,
-      insti:true,
-      lingequi:true
-    },
-    "sp.a":{
-      require:[],
-      reject:["VB"],
-      consti:true,
-      insti:true,
-      lingequi:true
-    },
-    "Open Vld":{
-      require:[],
-      reject:["VB"],
-      consti:true,
-      insti:true,
-      lingequi:true
-    },
-    "VB":{
-      require:[],
-      reject:[],
-      consti:true,
-      insti:true,
-      lingequi:true
-    },
-    "GROEN!":{
-      require:["ecolo"],
-      reject:["VB"],
-      consti:true,
-      insti:true,
-      lingequi:true
-    },
-    "LDd":{
-      require:[],
-      reject:["VB"],
-      consti:true,
-      insti:true,
-      lingequi:true
-    },
-    "PS":{
-      require:[],
-      reject:["VB","LDd"],
-      consti:false,
-      insti:false,
-      lingequi:true
-    },
-    "MR":{
-      require:[],
-      reject:["VB","LDd"],
-      consti:true,
-      insti:false,
-      lingequi:true
-    },
-    "CDh":{
-      require:[],
-      reject:["VB","LDd"],
-      consti:false,
-      insti:false,
-      lingequi:true
-    },
-    "ecolo":{
-      require:["GROEN!"],
-      reject:["VB","LDd"],
-      consti:true,
-      insti:false,
-      lingequi:true
-    },
-    "FN":{
-      require:[],
-      reject:["VB","LDd"],
-      consti:false,
-      insti:false,
-      lingequi:true
-    }
-   },
-   specCoa : { },
-   critCordon : true,
-   critWinners : true,
-   critLosers : true,
-   critBigFish : true,
-   critFamilies : false,
-   critBigFamily : true,
-   critInsti : false,
-   hideRedun : false,
-   actualGouv : {"Open Vld":true, "CD&V":true, "N-VA":true, "MR":true, "PS":true, "CDh":true},
-   actualRefoGouv : {"Open Vld":true, "CD&V":true, "N-VA":true, "MR":true, "PS":true, "CDh":true, "ecolo":true}
-  };
-  */
-  // 2009
-  var leg2009 = {
-   parl : {
-    "PS":29,
-    "MR":19,
-    "ecolo":14,
-    "CDh":13
-   },
-   gagnants : { // progressions
-    "PS":true
-   },
-   perdants : { // régressions
-    "MR":true
-   },
-   progrInit : {
-    "PS":{
-      require:[],
-      reject:[]
-    },
-    "MR":{
-      require:[],
-      reject:[]
-    },
-    "CDh":{
-      require:[],
-      reject:[]
-    },
-    "ecolo":{
-      require:[],
-      reject:[]
-    }
-   },
-   specCoa : {
-   },
-   critCordon : true,
-   critWinners : false,
-   critLosers : false,
-   critBigFish : false,
-   critFamilies : true,
-   critBigFamily : true,
-   critInsti : false,
-   hideRedun : true
-  };
-
   // 2019
   var leg2019 = {
    parl : {
-    "PS":20,
-    "MR":16,
-    "ecolo":20,
-    "CDh":7,
-    "PTB":12
+    "GROEN!":16,
+    "VB":10,
+    "Open Vld":17,
+    "sp.a":15,
+    "N-VA":36,
+    "CD&V":18,
+    "PVDA":5,
+    "UF":1
    },
    gagnants : { // progressions
-    "ecolo":true,
-    "PTB":true
+    "GROEN!":true
    },
    perdants : { // régressions
-    "PS":true,
-    "CDh":true,
-    "MR":true
+    "N-VA":true
    },
    progrInit : {
-    "PS":{
+    "GROEN!":{
       require:[],
       reject:[]
     },
-    "MR":{
+    "VB":{
       require:[],
       reject:[]
     },
-    "CDh":{
+    "Open Vld":{
       require:[],
       reject:[]
     },
-    "ecolo":{
+    "sp.a":{
       require:[],
       reject:[]
     },
-    "PTB":{
+    "N-VA":{
+      require:[],
+      reject:[]
+    },
+    "CD&V":{
+      require:[],
+      reject:[]
+    },
+    "PVDA":{
+      require:[],
+      reject:[]
+    },
+    "UF":{
       require:[],
       reject:[]
     }
@@ -537,8 +113,8 @@ footer {
    critWinners : false,
    critLosers : false,
    critBigFish : false,
-   critFamilies : true,
-   critBigFamily : true,
+   critFamilies : false,
+   critBigFamily : false,
    critInsti : false,
    hideRedun : true
   };
@@ -578,7 +154,9 @@ footer {
     "AGALEV":"NL",
     "PSC":"FR",
     "VU":"NL",
-    "PTB":"FR"
+    "PTB":"FR",
+    "PVDA":"NL",
+    "UF":"NL"
   };
   var color = {
     "CD&V N-VA":"#F89734",
@@ -603,7 +181,8 @@ footer {
     "AGALEV":"#A3C02A",
     "PSC":"#FF5400",
     "VU":"#FCB340",
-	"PTB":"#B30000"
+	"PVDA":"#B30000",
+	"UF":"#555555",
   };
   
   var famille = {
@@ -640,7 +219,9 @@ footer {
     "rouge romaine":{"socialistes":true,"centristes":true},
     "violette":     {"socialistes":true,"libéraux":true},
     "truquoise":    {"libéraux":true   ,"verts":true},
-    "orange bleue": {"libéraux":true   ,"centristes":true}
+    "orange bleue": {"libéraux":true   ,"centristes":true},
+	
+	"bourguignonne": {"N-VA":true, "Open Vld":true, "sp.a":true}
   };
   
   var coalitions;
@@ -1728,7 +1309,7 @@ footer {
 
       for(var i=0; i<inputs.length ;i++) {
         //alert(($.inArray(inputs[i].value, tParts))+" "+location.hash);
-        inputs[i].checked = $.inArray(inputs[i].value, tParts)!=-1;
+        inputs[i].checked = $.inArray(encodeURIComponent(inputs[i].value), tParts)!=-1 || $.inArray(inputs[i].value, tParts)!=-1;
       }
       change();
       $(".tabbertabdefault").removeClass("tabbertabdefault");
@@ -1740,13 +1321,13 @@ footer {
 
 </head>
 <body>
-  <h3>Toi aussi, forme ton Gouvernement Wallon</h3>
+  <h3>Toi aussi, forme ton Gouvernement Flamand</h3>
 
 <!--input class="btLeg" id="leg1999" type="button" value="1999" onclick="loadTab(leg1999);$('#leg1999').css('background-color','lightblue');"/>
 <input class="btLeg" id="leg2003" type="button" value="2003" onclick="loadTab(leg2003);$('#leg2003').css('background-color','lightblue');"/>
 <input class="btLeg" id="leg2007" type="button" value="2007" onclick="loadTab(leg2007);$('#leg2007').css('background-color','lightblue');"/-->
-<input class="btLeg" id="leg2009" type="button" value="2009" onclick="loadTab(leg2009);$('#leg2009').css('background-color','lightblue');" style="background-color:lightblue"/>
-<input class="btLeg" id="leg2019" type="button" value="2019?" onclick="loadTab(leg2019);$('#leg2019').css('background-color','lightblue');" />
+<!--input class="btLeg" id="leg2009" type="button" value="2009" onclick="loadTab(leg2009);$('#leg2009').css('background-color','lightblue');" style="background-color:lightblue"/-->
+<input class="btLeg" id="leg2019" type="button" value="2019?" onclick="loadTab(leg2019);$('#leg2019').css('background-color','lightblue');" style="background-color:lightblue"/>
 
 <div class="tabber" id="tabber">
 
@@ -1807,8 +1388,8 @@ footer {
   
   <br><br><footer><a href="mailto:leunen.d@gmail.com">contact</a><br/>Merci à Vincent de Coorebyter pour ses précieux conseils</footer>
 <script>
-  loadTab(leg2009);
-  document.getElementById("leg2009").setAttribute("style", "background-color:lightblue");
+  loadTab(leg2019);
+  document.getElementById("leg2019").setAttribute("style", "background-color:lightblue");
 </script>
 </body>
 </html>
