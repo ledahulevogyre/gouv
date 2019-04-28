@@ -1883,7 +1883,7 @@ progrInit : {
     var s = "<tr><th>Coalition</th>";
     for(var part in chamb)
       s += "<th style='background:"+color[part]+"'>"+part+"</th>";
-    $("#possible").append(s+"<th>Sièges</th><th>Partis</th><th></th></tr>");
+    $("#possible").append(s+"<th>Sièges</th><th>S. NL</th><th>S. FR</th><th>Partis</th><th></th></tr>");
 
     $('input[type=radio][name=coa]').attr('checked', false);
     for(var i=0; i<inputs.length ;i++)
@@ -1899,7 +1899,7 @@ progrInit : {
     s = "<tr><th>Coalition</th>";
     for(var part in chamb)
       s += "<th style='background:"+color[part]+"'>"+part+"</th>";
-    $("#possible").append(s+"<th>Sièges</th><th>Partis</th><th></th></tr>");
+    $("#possible").append(s+"<th>Sièges</th><th>S. NL</th><th>S. FR</th><th>Partis</th><th></th></tr>");
     computeCurrent();
     showComputed();
     showHideRedun();
@@ -2019,12 +2019,18 @@ progrInit : {
 
       }   
 
-	  var notBalanced = (pProportionChambNL<.5||pProportionChambFR<.5||pProportionSenatNL<.5||pProportionSenatFR<.5);
+	  var balancedNL = (pProportionChambNL>=.5&&pProportionSenatNL>=.5);
+	  var balancedFR = (pProportionChambFR>=.5&&pProportionSenatFR>=.5);
+	  var notBalanced = !balancedNL || !balancedFR;
 	  var sPropr = "";	
 	  if (notBalanced)
 	    var sPropr = "Ne respecte pas l&apos;équilibre linguistique ! Chambre nl:"+Math.round(pProportionChambNL*100)+"% Chambre fr:"+Math.round(pProportionChambFR*100)+"% Sénat nl:"+Math.round(pProportionSenatNL*100)+"% Sénat fr:"+Math.round(pProportionSenatFR*100)+"%";
       //shtml += "<td title='"+sPropr+"' class='numcell"+(notBalanced?" notbalanced":"")+"'>"+res[1]+"</td><td class='numcell'>"+count+"</td><td><a href='#"+partsHash.substring(1)+"'>voir</a></td>";
-      shtml += "<td title='"+sPropr+"' class='numcell"+(notBalanced?" notbalanced":"")+"'>"+res[1]+"</td><td class='numcell'>"+count+"</td><td"+(isActualGouv?" title='Coalition du gouvernement' style='background-color:pink'":"")+"><a href='#"+partsHash.substring(1)+"'>voir</a></td>";
+      shtml += "<td title='"+sPropr+"' class='numcell"+(notBalanced?" notbalanced":"")+"'>"+res[1]+"</td>";
+      shtml += "<td class='numcell"+(!balancedNL?" notbalanced":"")+"'>"+coaChamNL+"</td>";
+      shtml += "<td class='numcell"+(!balancedFR?" notbalanced":"")+"'>"+coaChamFR+"</td>";
+	  shtml += "<td class='numcell'>"+count+"</td>";
+	  shtml += "<td"+(isActualGouv?" title='Coalition du gouvernement' style='background-color:pink'":"")+"><a href='#"+partsHash.substring(1)+"'>voir</a></td>";
 
       
       return ["<tr"+(redun?" class='redun'":"")+">"+shtml+"</tr>",res[1]];
