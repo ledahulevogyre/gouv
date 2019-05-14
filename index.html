@@ -800,7 +800,7 @@ footer {
 progrInit : {
     "N-VA":{
       require:[],
-      reject:["VB","PS","ecolo"],
+      reject:["VB","PS","ecolo","PTB"],
       consti:true,
       insti:false,
       lingequi:false
@@ -849,28 +849,28 @@ progrInit : {
     },
     "PS":{
       require:[],
-      reject:["VB","PP","N-VA"],
+      reject:["VB","PP"],
       consti:false,
       insti:false,
       lingequi:false
     },
     "MR":{
       require:[],
-      reject:["VB"],
+      reject:["VB", "PTB"],
       consti:false,
       insti:false,
       lingequi:false
     },
     "CDh":{
       require:[],
-      reject:["VB","N-VA"],
+      reject:["VB", "PTB"],
       consti:false,
       insti:false,
       lingequi:false
     },
     "ecolo":{
       require:["GROEN!"],
-      reject:["VB", "PP"],
+      reject:["VB", "PP", "N-VA"],
       consti:false,
       insti:false,
       lingequi:false
