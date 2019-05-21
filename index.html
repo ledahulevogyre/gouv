@@ -759,7 +759,8 @@ footer {
   // 2019?
   var leg2019 = {
    chamb : {
-    "PTB":12,//8,//5
+    "PTB":9,//8,//5
+    "PVDA":3,//8,//5
     "ecolo":16,//14,//11,
     "GROEN!":12,//15,//12,
     "PS":20,//18,//19,
@@ -786,6 +787,7 @@ footer {
     "VB":2,
     "DéFI":0,
     "PTB":0,
+    "PVDA":0,
     "PP":0
    },
    dePart : "MR", // le parti du sénateur germanophone (siège à décompter pour atteindre la majorité francophone)
@@ -800,7 +802,7 @@ footer {
 progrInit : {
     "N-VA":{
       require:[],
-      reject:["VB","PS","ecolo","PTB"],
+      reject:["VB","PS","ecolo","PTB","DéFI"],
       consti:true,
       insti:false,
       lingequi:false
@@ -841,7 +843,14 @@ progrInit : {
       lingequi:false
     },
     "PTB":{
-      require:[],
+      require:["PVDA"],
+      reject:["VB", "N-VA", "MR", "Open Vld", "PP"],
+      consti:false,
+      insti:false,
+      lingequi:false
+    },
+    "PVDA":{
+      require:["PTB"],
       reject:["VB", "N-VA", "MR", "Open Vld", "PP"],
       consti:false,
       insti:false,
@@ -950,7 +959,8 @@ progrInit : {
     "PSC":"FR",
     "VU":"NL",
     "PTB-GO !":"FR",
-    "PTB":"FR"
+    "PTB":"FR",
+    "PVDA":"NL"
   };
   var color = {
     "CD&V N-VA":"#F89734",
@@ -978,7 +988,8 @@ progrInit : {
     "PSC":"#FF5400",
     "VU":"#FCB340",
 	"PTB-GO !":"#B30000",
-	"PTB":"#B30000"
+	"PTB":"#B30000",
+	"PVDA":"#B30303"
   };
   
   var famille = {
@@ -996,7 +1007,9 @@ progrInit : {
     "MR":"libéraux",
     "PSC":"centristes",
     "CDh":"centristes",
-    "ecolo":"verts"
+    "ecolo":"verts",
+    "PTB":"communistes",
+    "PVDA":"communistes"
   };
 
   var inputs;
