@@ -58,14 +58,13 @@ footer {
   // 2019
   var leg2019 = {
    parl : {
-    "PVDA":5,
-    "GROEN!":16,
-    "sp.a":15,
-    "CD&V":18,
-    "Open Vld":17,
-    "N-VA":36,
-    "UF":1,
-    "VB":10
+    "PVDA":4,
+    "GROEN!":14,
+    "sp.a":12,
+    "CD&V":19,
+    "Open Vld":16,
+    "N-VA":35,
+    "VB":23
    },
    gagnants : { // progressions
     "GROEN!":true
@@ -76,7 +75,7 @@ footer {
    progrInit : {
     "GROEN!":{
       require:[],
-      reject:[]
+      reject:["VB"]
     },
     "VB":{
       require:[],
@@ -84,32 +83,28 @@ footer {
     },
     "Open Vld":{
       require:[],
-      reject:[]
+      reject:["VB"]
     },
     "sp.a":{
       require:[],
-      reject:[]
+      reject:["VB"]
     },
     "N-VA":{
       require:[],
-      reject:[]
+      reject:["PVDA"]
     },
     "CD&V":{
       require:[],
-      reject:[]
+      reject:["VB"]
     },
     "PVDA":{
       require:[],
-      reject:[]
-    },
-    "UF":{
-      require:[],
-      reject:[]
+      reject:["VB"]
     }
    },
    specCoa : {
    },
-   critCordon : true,
+   critCordon : false,
    critWinners : false,
    critLosers : false,
    critBigFish : false,
@@ -1328,7 +1323,7 @@ footer {
 <input class="btLeg" id="leg2003" type="button" value="2003" onclick="loadTab(leg2003);$('#leg2003').css('background-color','lightblue');"/>
 <input class="btLeg" id="leg2007" type="button" value="2007" onclick="loadTab(leg2007);$('#leg2007').css('background-color','lightblue');"/-->
 <!--input class="btLeg" id="leg2009" type="button" value="2009" onclick="loadTab(leg2009);$('#leg2009').css('background-color','lightblue');" style="background-color:lightblue"/-->
-<input class="btLeg" id="leg2019" type="button" value="2019?" onclick="loadTab(leg2019);$('#leg2019').css('background-color','lightblue');" style="background-color:lightblue"/>
+<input class="btLeg" id="leg2019" type="button" value="2019" onclick="loadTab(leg2019);$('#leg2019').css('background-color','lightblue');" style="background-color:lightblue"/>
 
 <div class="tabber" id="tabber">
 
