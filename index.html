@@ -1507,6 +1507,7 @@ progrInit : {
     
     $("#hideRedun")[0].checked = currentLeg.hideRedun;
     showHideRedun();
+	critUpdate();
   }  
   
   function critUpdate() {
@@ -2040,7 +2041,7 @@ progrInit : {
 	    var sPropr = "Ne respecte pas l&apos;équilibre linguistique ! Chambre nl:"+Math.round(pProportionChambNL*100)+"% Chambre fr:"+Math.round(pProportionChambFR*100)+"% Sénat nl:"+Math.round(pProportionSenatNL*100)+"% Sénat fr:"+Math.round(pProportionSenatFR*100)+"%";
 	  }
 	  var sProprNL = "Chambre nl:"+Math.round(pProportionChambNL*100)+"% Sénat nl:"+Math.round(pProportionSenatNL*100)+"%";
-      var sProprFR = "NChambre fr:"+Math.round(pProportionChambFR*100)+"% Sénat fr:"+Math.round(pProportionSenatFR*100)+"%";
+      var sProprFR = "Chambre fr:"+Math.round(pProportionChambFR*100)+"% Sénat fr:"+Math.round(pProportionSenatFR*100)+"%";
       //shtml += "<td title='"+sPropr+"' class='numcell"+(notBalanced?" notbalanced":"")+"'>"+res[1]+"</td><td class='numcell'>"+count+"</td><td><a href='#"+partsHash.substring(1)+"'>voir</a></td>";
       shtml += "<td title='"+sPropr+"' class='numcell'>"+res[1]+"</td>";
       //shtml += "<td title='"+sProprNL+"' class='numcell"+(!balancedNL?" notbalanced":"")+"'>"+coaChamNL+"</td>";
