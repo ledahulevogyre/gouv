@@ -59,864 +59,13 @@ footer {
 <link rel="stylesheet" href="tabber.css" TYPE="text/css" MEDIA="screen">
 <script src="jquery-1.5.1.min.js"></script>
 <script type="text/javascript" src="tabber-minimized.js"></script>
+<script type="text/javascript" src="legislature1999.js"></script>
+<script type="text/javascript" src="legislature2003.js"></script>
+<script type="text/javascript" src="legislature2007.js"></script>
+<script type="text/javascript" src="legislature2010.js"></script>
+<script type="text/javascript" src="legislature2014.js"></script>
+<script type="text/javascript" src="legislature2019.js"></script>
 <script>
-  
-  // 1999
-  var leg1999 = {
-   chamb : {
-    "VLD":23,   
-    "CVP":22,   
-    "PS":19,    
-    "MR":18,    
-    "VB":15,    
-    "SP":14,    
-    "ecolo":11, 
-    "PSC":10,   
-    "AGALEV":9, 
-    "VU":8,     
-    "FN":1      
-   },
-  sena : {
-    "VLD":12,
-    "CVP":10,
-    "PS":10,
-    "MR":9,
-    "VB":6,
-    "SP":7,
-    "ecolo":6,
-    "AGALEV":4,
-    "PSC":5,
-    "VU":2,
-    "FN":0
-   },
-   dePart : "PS", // le parti du sénateur germanophone (siège à décompter pour atteindre la majorité francophone)
-   gagnants : { // progressions
-    "ecolo":true,
-    "AGALEV":true
-   },
-   perdants : { // progressions
-    "CVP":true
-   },
-   progrInit : {
-    "VLD":{
-      require:[],
-      reject:["VB"],
-      consti:false,
-      insti:false,
-      lingequi:true
-    },
-    "CVP":{
-      require:[],
-      reject:["VB"],
-      consti:false,
-      insti:false,
-      lingequi:true
-    },
-    "SP":{
-      require:[],
-      reject:["VB"],
-      consti:false,
-      insti:false,
-      lingequi:true
-    },
-    "VB":{
-      require:[],
-      reject:[],
-      consti:false,
-      insti:false,
-      lingequi:true
-    },
-    "AGALEV":{
-      require:["ecolo"],
-      reject:["VB"],
-      consti:false,
-      insti:false,
-      lingequi:true
-    },
-    "VU":{
-      require:[],
-      reject:["VB"],
-      consti:false,
-      insti:false,
-      lingequi:true
-    },
-    "PS":{
-      require:[],
-      reject:["VB"],
-      consti:false,
-      insti:false,
-      lingequi:true
-    },
-    "MR":{
-      require:[],
-      reject:["VB"],
-      consti:false,
-      insti:false,
-      lingequi:true
-    },
-    "PSC":{
-      require:[],
-      reject:["VB"],
-      consti:false,
-      insti:false,
-      lingequi:true
-    },
-    "ecolo":{
-      require:["AGALEV"],
-      reject:["VB"],
-      consti:false,
-      insti:false,
-      lingequi:true
-    },
-    "FN":{
-      require:[],
-      reject:["VB"],
-      consti:false,
-      insti:false,
-      lingequi:true
-    }
-   },
-   specCoa : {},
-   
-   critCordon : true,
-   critWinners : true,
-   critLosers : true,
-   critBigFish : true,
-   critFamilies : true,
-   critBigFamily : true,
-   critInsti : false,
-   hideRedun : true,
-   actualGouv : {"VLD":true, "MR":true, "PS":true, "SP":true, "AGALEV":true, "ecolo":true},
-   actualRefoGouv : {}
-  };
-
-
-  // 2003
-  var leg2003 = {
-   chamb : {
-    "VLD":25,   // +2
-    "sp.a-spirit":23,    // +9
-    "CD&V":21,   // -1
-    "PS":25,    // +6
-    "VB":18,    // +3
-    "MR":24,    // +6
-    "CDh":8,   // -2
-    "N-VA":1,     // -7
-    "ecolo":4, // -5
-    "FN":1     
-   },
-  sena : {
-    "VLD":11,   // +2
-    "sp.a-spirit":12,    // +9
-    "CD&V":9,   // -1
-    "PS":11,    // +6
-    "VB":9,    // +3
-    "MR":11,    // +6
-    "CDh":4,   // -2
-    "N-VA":0,     // -7
-    "ecolo":2, // -5
-    "FN":2
-   },
-   dePart : "MR", // le parti du sénateur germanophone (siège à décompter pour atteindre la majorité francophone)
-   gagnants : { // progressions
-    "sp.a-spirit":true,
-    "PS":true
-   },
-   perdants : { // progressions
-    "ecolo":true
-   },
-   progrInit : {
-    "VLD":{
-      require:[],
-      reject:["VB"],
-      consti:false,
-      insti:false,
-      lingequi:true
-    },
-    "CD&V":{
-      require:["N-VA"],
-      reject:["VB"],
-      consti:false,
-      insti:false,
-      lingequi:true
-    },
-    "sp.a-spirit":{
-      require:[],
-      reject:["VB"],
-      consti:false,
-      insti:false,
-      lingequi:true
-    },
-    "VB":{
-      require:[],
-      reject:[],
-      consti:false,
-      insti:false,
-      lingequi:true
-    },
-    "AGALEV":{
-      require:["ecolo"],
-      reject:["VB"],
-      consti:false,
-      insti:false,
-      lingequi:true
-    },
-    "N-VA":{
-      require:["CD&V"],
-      reject:["VB"],
-      consti:false,
-      insti:false,
-      lingequi:true
-    },
-    "PS":{
-      require:[],
-      reject:["VB"],
-      consti:false,
-      insti:false,
-      lingequi:true
-    },
-    "MR":{
-      require:[],
-      reject:["VB"],
-      consti:false,
-      insti:false,
-      lingequi:true
-    },
-    "CDh":{
-      require:[],
-      reject:["VB"],
-      consti:false,
-      insti:false,
-      lingequi:true
-    },
-    "ecolo":{
-      require:["AGALEV"],
-      reject:["VB"],
-      consti:false,
-      insti:false,
-      lingequi:true
-    },
-    "FN":{
-      require:[],
-      reject:["VB"],
-      consti:false,
-      insti:false,
-      lingequi:true
-    }
-   },
-   specCoa : {},
-   critCordon : true,
-   critWinners : true,
-   critLosers : true,
-   critBigFish : true,
-   critFamilies : true,
-   critBigFamily : true,
-   critInsti : false,
-   hideRedun : true,
-   actualGouv : {"VLD":true, "MR":true, "PS":true, "sp.a-spirit":true},
-   actualRefoGouv : {}
-  };
-
-  var leg2007 = {
-   chamb : {
-    "CD&V":23, // difficile de savoir comment se répartissent cd&v et nva dont le cartel a explosé en cours de législature
-    "MR":23,
-    "PS":20, //-12
-    "Open Vld":18, //+5
-    "VB":17, // un député est passé de VB à NVA en cours de législature (je le compte ici dans VB)
-    "sp.a":14,
-    "CDh":10,
-    "ecolo":8,
-    "N-VA":7, // difficile de savoir comment se répartissent cd&v et nva dont le cartel a explosé en cours de législature + un député est passé de VB à NVA  (je le compte ici dans VB)
-    "LDd":5,
-    "GROEN!":4,
-    "FN":1
-   },
-   sena : {
-    "CD&V":12, //+7
-    "MR":10,
-    "PS":9, //-12
-    "Open Vld":9, //+5
-    "VB":8, //+4
-    "sp.a":6,
-    "CDh":5,
-    "ecolo":5,
-    "N-VA":2, // -20
-    "LDd":1,
-    "GROEN!":3,
-    "FN":1
-   },
-   dePart : "PS", // le parti du sénateur germanophone (siège à décompter pour atteindre la majorité francophone)
-   gagnants : { // progressions
-    "CD&V":true
-   },
-   perdants : { // progressions
-     "sp.a":true
-   },
-   progrInit : {
-    "N-VA":{
-      require:["CD&V"],
-      reject:["VB"],
-      consti:true,
-      insti:true,
-      lingequi:false
-    },
-    "CD&V":{
-      require:[],
-      reject:["VB"],
-      consti:true,
-      insti:true,
-      lingequi:false
-    },
-    "sp.a":{
-      require:[],
-      reject:["VB"],
-      consti:true,
-      insti:true,
-      lingequi:false
-    },
-    "Open Vld":{
-      require:[],
-      reject:["VB"],
-      consti:true,
-      insti:true,
-      lingequi:false
-    },
-    "VB":{
-      require:[],
-      reject:[],
-      consti:true,
-      insti:true,
-      lingequi:false
-    },
-    "GROEN!":{
-      require:["ecolo"],
-      reject:["VB"],
-      consti:true,
-      insti:true,
-      lingequi:false
-    },
-    "LDd":{
-      require:[],
-      reject:["VB"],
-      consti:true,
-      insti:true,
-      lingequi:false
-    },
-    "PS":{
-      require:[],
-      reject:["VB","LDd"],
-      consti:false,
-      insti:false,
-      lingequi:false
-    },
-    "MR":{
-      require:[],
-      reject:["VB","LDd"],
-      consti:true,
-      insti:false,
-      lingequi:false
-    },
-    "CDh":{
-      require:[],
-      reject:["VB","LDd"],
-      consti:false,
-      insti:false,
-      lingequi:false
-    },
-    "ecolo":{
-      require:["GROEN!"],
-      reject:["VB","LDd"],
-      consti:true,
-      insti:false,
-      lingequi:false
-    },
-    "FN":{
-      require:[],
-      reject:["VB","LDd"],
-      consti:false,
-      insti:false,
-      lingequi:false
-    }
-   },
-   specCoa : { },
-   critCordon : true,
-   critWinners : true,
-   critLosers : true,
-   critBigFish : true,
-   critFamilies : false,
-   critBigFamily : true,
-   critInsti : false,
-   hideRedun : false,
-   actualGouv : {"Open Vld":true, "CD&V":true, "N-VA":true, "MR":true, "PS":true, "CDh":true},
-   actualRefoGouv : {"Open Vld":true, "CD&V":true, "N-VA":true, "MR":true, "PS":true, "CDh":true, "ecolo":true}
-  };
-  
-  // 2010
-  var leg2010 = {
-   chamb : {
-    "N-VA":27,
-    "PS":26,
-    "MR":15,
-    "CD&V":17,
-    "sp.a":13,
-    "Open Vld":13,
-    "VB":12,
-    "CDh":9,
-    "ecolo":8,
-    "GROEN!":5,
-    "FDF":3,
-    "LDd":1,
-    "PP":1
-   },
-   sena : {
-    "N-VA":14,
-    "PS":13,
-    "MR":8,
-    "CD&V":7,
-    "sp.a":7,
-    "Open Vld":6,
-    "VB":5,
-    "CDh":4,
-    "ecolo":5,
-    "GROEN!":2,
-    "FDF":0,
-    "LDd":0,
-    "PP":0
-   },
-   dePart : "PS", // le parti du sénateur germanophone (siège à décompter pour atteindre la majorité francophone)
-   gagnants : { // progressions
-    "N-VA":true,
-    "PS":true
-   },
-   perdants : { // régressions
-    "Open Vld":true,
-    "MR":true,
-    "VB":true
-   },
-   progrInit : {
-    "N-VA":{
-      require:[],
-      reject:["VB", "FDF"],
-      consti:true,
-      insti:true,
-      lingequi:false
-    },
-    "CD&V":{
-      require:[],
-      reject:["VB"],
-      consti:true,
-      insti:true,
-      lingequi:false
-    },
-    "sp.a":{
-      require:[],
-      reject:["VB"],
-      consti:true,
-      insti:true,
-      lingequi:false
-    },
-    "Open Vld":{
-      require:[],
-      reject:["VB"],
-      consti:true,
-      insti:true,
-      lingequi:false
-    },
-    "VB":{
-      require:[],
-      reject:[],
-      consti:true,
-      insti:true,
-      lingequi:false
-    },
-    "GROEN!":{
-      require:["ecolo"],
-      reject:["VB"],
-      consti:true,
-      insti:true,
-      lingequi:false
-    },
-    "LDd":{
-      require:[],
-      reject:["VB"],
-      consti:true,
-      insti:true,
-      lingequi:false
-    },
-    "PS":{
-      require:[],
-      reject:["VB"],
-      consti:false,
-      insti:false,
-      lingequi:false
-    },
-    "MR":{
-      require:[],
-      reject:["VB"],
-      consti:true,
-      insti:false,
-      lingequi:false
-    },
-    "CDh":{
-      require:[],
-      reject:["VB"],
-      consti:false,
-      insti:false,
-      lingequi:false
-    },
-    "ecolo":{
-      require:["GROEN!"],
-      reject:["VB"],
-      consti:true,
-      insti:false,
-      lingequi:false
-    },
-    "FDF":{
-      require:[],
-      reject:["VB", "N-VA"],
-      consti:false,
-      insti:false,
-      lingequi:false
-    },
-    "PP":{
-      require:[],
-      reject:["VB"],
-      consti:false,
-      insti:false,
-      lingequi:false
-    }
-   },
-   specCoa : {
-    "«les 9»":{"N-VA":true,"PS":true,"sp.a":true,"Open Vld":true,"MR":true,"CD&V":true,"CDh":true,"ecolo":true,"GROEN!":true},
-    "«les 7»":{"N-VA":true,"PS":true,"sp.a":true,"CD&V":true,"CDh":true,"ecolo":true,"GROEN!":true},
-    "miroir (des exécutifs régionaux)":{"CD&V":true,"sp.a":true, "N-VA":true,"PS":true, "CDh":true, "ecolo":true}
-   },
-   critCordon : true,
-   critWinners : false,
-   critLosers : false,
-   critBigFish : false,
-   critFamilies : true,
-   critBigFamily : false,
-   critInsti : false,
-   hideRedun : true,
-   actualGouv : {"Open Vld":true, "CD&V":true, "sp.a":true, "MR":true, "PS":true, "CDh":true},
-   actualRefoGouv : {"Open Vld":true, "CD&V":true, "sp.a":true, "MR":true, "PS":true, "CDh":true, "ecolo":true, "GROEN!":true}
-  };
-
-  // 2014
-  var leg2014 = {
-   chamb : {
-    "PTB-GO !":2,
-    "ecolo":6,
-    "GROEN!":6,
-    "PS":23,
-    "sp.a":13,
-    "CDh":9,
-    "CD&V":18,
-    "FDF":2,
-    "MR":20,
-    "Open Vld":14,
-    "N-VA":33,
-    "VB":3,
-    "PP":1
-   },
-   sena : {
-    "N-VA":12,
-    "PS":9,
-    "MR":9,
-    "CD&V":8,
-    "Open Vld":5,
-    "sp.a":5,
-    "CDh":4,
-    "ecolo":3,
-    "GROEN!":3,
-    "VB":2,
-    "FDF":0,
-    "PTB-GO !":0,
-    "PP":0
-   },
-   dePart : "MR", // le parti du sénateur germanophone (siège à décompter pour atteindre la majorité francophone)
-   gagnants : { // progressions
-    "N-VA":true
-   },
-   perdants : { // régressions
-    "VB":true,
-    "ecolo":true
-   },
-   progrInit : {
-    "N-VA":{
-      require:[],
-      reject:["VB"],
-      consti:true,
-      insti:false,
-      lingequi:false
-    },
-    "CD&V":{
-      require:[],
-      reject:["VB"],
-      consti:true,
-      insti:true,
-      lingequi:false
-    },
-    "sp.a":{
-      require:[],
-      reject:["VB"],
-      consti:false,
-      insti:false,
-      lingequi:false
-    },
-    "Open Vld":{
-      require:[],
-      reject:["VB"],
-      consti:false,
-      insti:false,
-      lingequi:false
-    },
-    "VB":{
-      require:[],
-      reject:[],
-      consti:true,
-      insti:true,
-      lingequi:false
-    },
-    "GROEN!":{
-      require:["ecolo"],
-      reject:["VB"],
-      consti:false,
-      insti:false,
-      lingequi:false
-    },
-    "PTB-GO !":{
-      require:[],
-      reject:["VB", "N-VA", "MR", "Open Vld", "PP"],
-      consti:false,
-      insti:false,
-      lingequi:false
-    },
-    "PS":{
-      require:[],
-      reject:["VB","PP","N-VA"],
-      consti:false,
-      insti:false,
-      lingequi:false
-    },
-    "MR":{
-      require:[],
-      reject:["VB"],
-      consti:false,
-      insti:false,
-      lingequi:false
-    },
-    "CDh":{
-      require:[],
-      reject:["VB","N-VA"],
-      consti:false,
-      insti:false,
-      lingequi:false
-    },
-    "ecolo":{
-      require:["GROEN!"],
-      reject:["VB", "PP"],
-      consti:false,
-      insti:false,
-      lingequi:false
-    },
-    "FDF":{
-      require:[],
-      reject:["VB"],
-      consti:false,
-      insti:false,
-      lingequi:false
-    },
-    "PP":{
-      require:[],
-      reject:["VB"],
-      consti:false,
-      insti:false,
-      lingequi:false
-    }
-   },
-   specCoa : {
-    "miroir (des exécutifs régionaux)":{"CD&V":true, "N-VA":true,"PS":true, "CDh":true},
-    "centre-droit diminuée":{"CD&V":true, "N-VA":true, "CDh":true, "MR":true},
-    "suédoise ou kamikaze":{"CD&V":true, "N-VA":true, "Open Vld":true, "MR":true}
-   },
-   critCordon : true,
-   critWinners : false,
-   critLosers : false,
-   critBigFish : false,
-   critFamilies : false,
-   critBigFamily : false,
-   critInsti : false,
-   hideRedun : true,
-   //actualGouv : {"Open Vld":true, "CD&V":true, "sp.a":true, "MR":true, "PS":true, "CDh":true},
-   actualGouv : {"CD&V":true, "N-VA":true, "Open Vld":true, "MR":true},
-   actualRefoGouv : {"Open Vld":true, "CD&V":true, "sp.a":true, "MR":true, "PS":true, "CDh":true, "ecolo":true, "GROEN!":true}
-  };
-
-  // 2019
-  var leg2019 = {
-   chamb : {
-    "PTB":8,
-    "PVDA":4,
-    "ecolo":12,
-    "GROEN!":9,
-    "PS":19,
-    "sp.a":9,
-    "CDh":5,
-    "CD&V":12,
-    "DéFI":2,
-    "MR":14,
-    "Open Vld":12,
-    "N-VA":25,
-    "VB":18,
-    "Kir":1,
-   },
-   sena : {
-    "N-VA":9,
-    "PS":7,
-    "MR":7,
-    "CD&V":5,
-    "Open Vld":5,
-    "sp.a":4,
-    "CDh":2,
-    "ecolo":5,
-    "GROEN!":4,
-    "VB":7,
-    "DéFI":0,
-    "PTB":4,
-    "PVDA":1,
-	"Kir":0
-   },
-   dePart : "MR", // le parti du sénateur germanophone (siège à décompter pour atteindre la majorité francophone)
-   gagnants : { // progressions
-    "ecolo":true,
-    "GROEN!":true,
-    "PTB":true,
-    "PVDA":true,
-    "VB":true
-   },
-   perdants : { // régressions
-    "N-VA":true
-   },
-progrInit : {
-    "N-VA":{
-      require:[],
-      reject:["PS","ecolo","PTB","DéFI"],
-      consti:true,
-      insti:false,
-      lingequi:false
-    },
-    "CD&V":{
-      require:[],
-      reject:["VB"],
-      consti:true,
-      insti:true,
-      lingequi:false
-    },
-    "sp.a":{
-      require:[],
-      reject:["VB"],
-      consti:false,
-      insti:false,
-      lingequi:false
-    },
-    "Open Vld":{
-      require:[],
-      reject:["VB"],
-      consti:false,
-      insti:false,
-      lingequi:false
-    },
-    "VB":{
-      require:[],
-      reject:[],
-      consti:true,
-      insti:true,
-      lingequi:false
-    },
-    "GROEN!":{
-      require:["ecolo"],
-      reject:["VB"],
-      consti:false,
-      insti:false,
-      lingequi:false
-    },
-    "PTB":{
-      require:["PVDA"],
-      reject:["VB", "N-VA", "MR", "Open Vld", "PP"],
-      consti:false,
-      insti:false,
-      lingequi:false
-    },
-    "PVDA":{
-      require:["PTB"],
-      reject:["VB", "N-VA", "MR", "Open Vld", "PP"],
-      consti:false,
-      insti:false,
-      lingequi:false
-    },
-    "PS":{
-      require:[],
-      reject:["VB","PP"],
-      consti:false,
-      insti:false,
-      lingequi:false
-    },
-    "MR":{
-      require:[],
-      reject:["VB", "PTB"],
-      consti:false,
-      insti:false,
-      lingequi:false
-    },
-    "CDh":{
-      require:[],
-      reject:["VB", "PTB"],
-      consti:false,
-      insti:false,
-      lingequi:false
-    },
-    "ecolo":{
-      require:["GROEN!"],
-      reject:["VB", "PP", "N-VA"],
-      consti:false,
-      insti:false,
-      lingequi:false
-    },
-    "DéFI":{
-      require:[],
-      reject:["VB", "N-VA"],
-      consti:false,
-      insti:false,
-      lingequi:false
-    },
-    "Kir":{
-      require:[],
-      reject:[],
-      consti:false,
-      insti:false,
-      lingequi:false
-    }
-   },
-   specCoa : {
-    "miroir (des exécutifs régionaux)":{"CD&V":true, "N-VA":true, "Open Vld":true,"PS":true, "MR":true, "ecolo":true},
-    "centre-droit diminuée":{"CD&V":true, "N-VA":true, "CDh":true, "MR":true},
-    "suédoise ou kamikaze":{"CD&V":true, "N-VA":true, "Open Vld":true, "MR":true}
-   },
-   critCordon : false,
-   critWinners : false,
-   critLosers : false,
-   critBigFish : false,
-   critFamilies : false,
-   critBigFamily : false,
-   critInsti : false,
-   hideRedun : true,
-   //actualGouv : {"Open Vld":true, "CD&V":true, "sp.a":true, "MR":true, "PS":true, "CDh":true},
-   actualGouv : {"CD&V":true, "N-VA":true, "Open Vld":true, "MR":true},
-   actualRefoGouv : {"Open Vld":true, "CD&V":true, "sp.a":true, "MR":true, "PS":true, "CDh":true, "ecolo":true, "GROEN!":true}
-  } 
 
  
   // http://www.senate.be/www/?MIval=/Statistieken/SamenstellingVerg&LEG=6&LANG=fr
@@ -932,6 +81,7 @@ progrInit : {
   var perdants;
   var progrInit;  
   var specCoa;
+  var minLangPC;
 
 
 
@@ -1017,29 +167,26 @@ progrInit : {
 
   var inputs;
   var tradCoa = {
-    "Vivaldi":{
-      "socialistes":true, 
-      "libéraux":true, 
-      "centristes":true, 
-      "verts":true},
+    "quadripartite d'union nationale":{type:"S",
+	           partys:[
+      "socialistes", 
+      "libéraux", 
+      "centristes", 
+      "verts"]},
 
-    "tripartite traditionnelle":{"socialistes":true,"libéraux"  :true,"centristes":true},
-    "olivier":                  {"socialistes":true,"centristes":true,"verts"     :true},
-    "arc-en-ciel ou gambienne": {"socialistes":true,"libéraux"  :true,"verts"     :true},
-    "jamaïcaine":               {"libéraux"   :true,"centristes":true,"verts"     :true},
-    "Arizona": {"libéraux":true, "centristes":true, "N-VA":true, "sp.a":true}, 
+    "tripartite traditionnelle":{type:"S", partys:["socialistes","libéraux"  ,"centristes"]},
+    "olivier":                  {type:"S", partys:["socialistes","centristes","verts"     ]},
+    "arc-en-ciel ou gambienne": {type:"S", partys:["socialistes","libéraux"  ,"verts"     ]},
+    "jamaïcaine":               {type:"S", partys:["libéraux"   ,"centristes","verts"     ]},
 
-    "centre-droit ou grande suédoise":{"libéraux":true   ,"centristes":true, "N-VA":true},
-    "bourguignonne": {"libéraux":true   ,"N-VA":true, "socialistes":true},
-    "lilas ou arménienne":{"libéraux":true,"centristes":true,"PS":true},
+    "centre-droit ou grande suédoise":{type:"D", partys:["libéraux"   ,"centristes", "N-VA"]},
+    "bourguignonne": {type:"D", partys:["libéraux"   ,"N-VA", "socialistes"]},
 	
-    "rouge romaine":{"socialistes":true,"centristes":true},
-    "violette":     {"socialistes":true,"libéraux":true},
-    "turquoise":    {"libéraux":true   ,"verts":true},
-    "orange bleue": {"libéraux":true   ,"centristes":true},
-    "portugaise":   {"socialistes":true   ,"verts":true},
-
-    "orange sanguine":{"libéraux":true,"CVP":true,"CD&V N-VA":true,"CD&V":true,"PS":true}
+    "rouge romaine":{type:"S", partys:["socialistes","centristes"]},
+    "violette":     {type:"S", partys:["socialistes","libéraux"]},
+    "turquoise":    {type:"S", partys:["libéraux"   ,"verts"]},
+    "orange bleue ou bleue-romaine": {type:"S", partys:["libéraux"   ,"centristes"]},
+    "portugaise ou pastèque":   {type:"S", partys:["socialistes"   ,"verts"]}
   };
   
   var coalitions;
@@ -1062,7 +209,7 @@ progrInit : {
    gagnants = leg.gagnants;
    perdants = leg.perdants;
    progrInit = leg.progrInit;  
-   specCoa = leg.specCoa;    
+   specCoa = leg.specCoa;  
   }
 
 
@@ -1087,10 +234,10 @@ progrInit : {
     inputs = $("#tab input");
 
     tab = $("#coaTab").empty();
-    tab.append("<tr><th colspan='2'>Coalitions</th></tr>");
+    tab.append("<tr><th title=\"S : Symétrique\nA : A ssymétrique\nD : Distinctive = incluant des partis n'ayant pas de pendant dans l'autre groupe linguistique\">Type</th><th colspan='2'>Coalitions</th></tr>");
     for (var i=0; i<coalitions.length ;i++) {
       var coa = coalitions[i];
-      tab.append("<tr><td>"+coa.name+"</td><td><input value='"+coa.name+"' name='coa' type='radio' onclick='setCoa()'></tr>");
+      tab.append("<tr><td>"+coa.type+"</td><td>"+coa.name+"</td><td><input value='"+coa.name+"' name='coa' type='radio' onclick='setCoa()'></tr>");
     }
     
     // critères
@@ -1188,19 +335,19 @@ progrInit : {
       // trouver les partis actuels
       var arrParts = [];
       for(var part in chamb) {
-        if ((part in tradCoa[tCoa]) || (famille[part] in tradCoa[tCoa]))
+        if ((tradCoa[tCoa].partys.includes(part)) || (tradCoa[tCoa].partys.includes(famille[part])))
           arrParts.push(part);
       }
-      coalitions.push({name:tCoa,parts:arrParts});
+      coalitions.push({name:tCoa, parts:arrParts, type:tradCoa[tCoa].type});
     }
     for(var tCoa in specCoa) {
       // trouver les partis actuels
       var arrParts = [];
       for(var part in chamb) {
-        if ((part in specCoa[tCoa]) || (famille[part] in specCoa[tCoa]))
+        if ((specCoa[tCoa].partys.includes(part)) || (specCoa[tCoa].partys.includes(famille[part])))
           arrParts.push(part);
       }
-      coalitions.push({name:tCoa,parts:arrParts});
+      coalitions.push({name:tCoa, parts:arrParts, type:specCoa[tCoa].type});
     }
     coalitions.sort(function(a, b) {
         return (b.parts.length - a.parts.length);
@@ -1518,6 +665,8 @@ progrInit : {
     if (currentLeg.critBigFamily)
       critBigFamily(true);
     critInsti(currentLeg.critInsti);
+	$("#minLangPC")[0].value = currentLeg.minLangPC;
+	
     
     $("#hideRedun")[0].checked = currentLeg.hideRedun;
     showHideRedun();
@@ -2029,23 +1178,54 @@ progrInit : {
         shtml = "<td>Inconnue</td>"+shtml;
 
       // test actualGouv
-      var isActualGouv = true;
-      for(var gouvPart in currentLeg.actualGouv) {
-        //alert(gouvPart+" "+(gouvPart in parts)+" "+(gouvPart in chamb));
-        if (!(gouvPart in parts) && gouvPart in chamb) {
-          isActualGouv = false;
-          break;
-        }
-      }
-      if (isActualGouv) {
-        for(var part in parts) {
-          if (!(part in currentLeg.actualGouv) && part in chamb) {
-            isActualGouv = false;
-            break;
-          }
-        }
+	  var isActualGouv = false;
+	  for (const actualGouv of [].concat(currentLeg.actualGouv)) {
+		  isActualGouv = true;
+		  for(var gouvPart in actualGouv) {
+			//alert(gouvPart+" "+(gouvPart in parts)+" "+(gouvPart in chamb));
+			if (!(gouvPart in parts) && gouvPart in chamb) {
+			  isActualGouv = false;
+			  break;
+			}
+		  }
+		  if (isActualGouv) {
+			for(var part in parts) {
+			  if (!(part in actualGouv) && part in chamb) {
+				isActualGouv = false;
+				break;
+			  }
+			}
 
-      }   
+		  }   
+	      if (isActualGouv) {
+		    break;
+		  }
+	  }
+
+      // test actualGouv
+	  var isActualRefoGouv = false;
+	  for (const actualGouv of [].concat(currentLeg.actualRefoGouv)) {
+		  isActualRefoGouv = true;
+		  for(var gouvPart in actualGouv) {
+			//alert(gouvPart+" "+(gouvPart in parts)+" "+(gouvPart in chamb));
+			if (!(gouvPart in parts) && gouvPart in chamb) {
+			  isActualRefoGouv = false;
+			  break;
+			}
+		  }
+		  if (isActualRefoGouv) {
+			for(var part in parts) {
+			  if (!(part in actualGouv) && part in chamb) {
+				isActualRefoGouv = false;
+				break;
+			  }
+			}
+
+		  }   
+	      if (isActualRefoGouv) {
+		    break;
+		  }
+	  }
 
 	  var balancedNL = (pProportionChambNL>=.5&&pProportionSenatNL>=.5);
 	  var balancedFR = (pProportionChambFR>=.5&&pProportionSenatFR>=.5);
@@ -2064,7 +1244,7 @@ progrInit : {
 	  var colorFR = (pProportionChambFR>=.5?"00FF":"FF00")+"00"+Math.round(pProportionChambFR>=.5?(pProportionChambFR-.5)*512:-(pProportionChambFR-.5)*512).toString(16);
       shtml += "<td title='"+sProprFR+"' class='numcell' style='background-color:#"+colorFR+"'>"+coaChamFR+"</td>";
 	  shtml += "<td class='numcell'>"+count+"</td>";
-	  shtml += "<td"+(isActualGouv?" title='Coalition du gouvernement' style='background-color:pink'":"")+"><a href='#"+partsHash.substring(1)+"'>voir</a></td>";
+	  shtml += "<td"+(isActualGouv?" title='Coalition du gouvernement' style='background-color:pink'":(isActualRefoGouv?" title='Coalition du gouvernement pour réforme' style='background-color:yellow'":""))+"><a href='#"+partsHash.substring(1)+"'>voir</a></td>";
 
       
       return ["<tr"+(redun?" class='redun'":"")+">"+shtml+"</tr>",res[1]];
@@ -2228,7 +1408,9 @@ progrInit : {
       }
       change();
       $(".tabbertabdefault").removeClass("tabbertabdefault");
-      $('#tabber')[0].tabber.tabShow(0);
+	  if ($('#tabber')[0].tabber) {
+		$('#tabber')[0].tabber.tabShow(0);
+	  }
       window.scrollTo(0,0);
     }
   }
@@ -2305,7 +1487,7 @@ progrInit : {
 </div>
 
   
-  <br><br><footer><a href="mailto:leunen.d@gmail.com">email</a> <a href="https://twitter.com/ledahulevogyre">@ledahulevogyre</a><br/>Merci à Vincent de Coorebyter pour ses précieux conseils</footer>
+  <br><br><footer><a href="mailto:leunen.d@gmail.com">email</a><br/>Merci à Vincent de Coorebyter pour ses précieux conseils</footer>
 <script>
   loadTab(leg2019);
   document.getElementById("leg2019").setAttribute("style", "background-color:lightblue");
