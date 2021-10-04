@@ -157,6 +157,7 @@ progrInit : {
     "centre-droit diminuée":{type:"A", partys:["CD&V", "N-VA", "CDh", "MR"]},
     "suédoise ou kamikaze":{type:"A", partys:["CD&V", "N-VA", "Open Vld", "MR"]},
     "lilas ou arménienne":{type:"A", partys:["libéraux","centristes","PS"]},	
+	"diables rouges":{type:"A", partys:["N-VA","PS","CD&V","MR","sp.a"]},	
     "orange sanguine":{type:"A", partys:["libéraux","CVP","CD&V N-VA","CD&V","PS"]}
    },
    critCordon : false,
