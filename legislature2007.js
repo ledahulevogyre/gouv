@@ -121,6 +121,9 @@
     }
    },
    specCoa : {
+    "centre-droit ou grande suédoise":{type:"D", partys:["libéraux"   ,"centristes", "N-VA"]},
+    "bourguignonne": {type:"D", partys:["libéraux"   ,"N-VA", "socialistes"]},
+	
     "lilas ou arménienne":{type:"A", partys:["libéraux","centristes","PS"]},
     "orange sanguine":{type:"A", partys:["libéraux","CVP","CD&V N-VA","CD&V","PS"]}	
    },

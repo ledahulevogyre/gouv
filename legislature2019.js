@@ -153,6 +153,10 @@ progrInit : {
       "CD&V", 
       "verts"]},
     "Arizona": {type:"A", partys:["libéraux", "centristes", "N-VA", "sp.a"]}, 
+
+    "centre-droit ou grande suédoise":{type:"D", partys:["libéraux"   ,"centristes", "N-VA"]},
+    "bourguignonne": {type:"D", partys:["libéraux"   ,"N-VA", "socialistes"]},
+	
     "miroir (des exécutifs régionaux)":{type:"A", partys:["CD&V", "N-VA", "Open Vld","PS", "MR", "ecolo"]},
     "centre-droit diminuée":{type:"A", partys:["CD&V", "N-VA", "CDh", "MR"]},
     "suédoise ou kamikaze":{type:"A", partys:["CD&V", "N-VA", "Open Vld", "MR"]},

@@ -138,6 +138,10 @@
     "«les 9»":{type:"D", partys:["N-VA","PS","sp.a","Open Vld","MR","CD&V","CDh","ecolo","GROEN!"]},
     "«les 7»":{type:"D", partys:["N-VA","PS","sp.a","CD&V","CDh","ecolo","GROEN!"]},
     "miroir (des exécutifs régionaux)":{type:"A", partys:["CD&V","sp.a", "N-VA","PS", "CDh", "ecolo"]},
+
+    "centre-droit ou grande suédoise":{type:"D", partys:["libéraux"   ,"centristes", "N-VA"]},
+    "bourguignonne": {type:"D", partys:["libéraux"   ,"N-VA", "socialistes"]},
+	
     "lilas ou arménienne":{type:"A", partys:["libéraux","centristes","PS"]},
     "orange sanguine":{type:"A", partys:["libéraux","CVP","CD&V N-VA","CD&V","PS"]}
    },
