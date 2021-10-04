@@ -50,14 +50,14 @@ progrInit : {
       require:[],
       reject:["PS","ecolo","PTB","DéFI"],
       consti:true,
-      insti:false,
+      insti:true,
       lingequi:false
     },
     "CD&V":{
       require:[],
       reject:["VB"],
-      consti:true,
-      insti:true,
+      consti:false,
+      insti:false,
       lingequi:false
     },
     "sp.a":{
